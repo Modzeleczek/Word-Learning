@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Learning"
         mc:Ignorable="d"
-        Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Height="600" Width="1000"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border Background="#333533"
+            CornerRadius="20"
+            BorderThickness="2px"
+            BorderBrush="#202020">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Word Learning"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Foreground="#D6D6D6"
+                       FontSize="22"
+                       Margin="0,0,20,0"/>
+            <Image  Source="/Images/dictionary.png"
+                    Margin="10"
+                    HorizontalAlignment="Left"
+                    />
+            <StackPanel Grid.Column="0" Grid.Row="1">
+                <RadioButton Content="Nauka"
+                             Height="50"
+                             Foreground="#D6D6D6"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
