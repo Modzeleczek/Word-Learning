@@ -2,12 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Word_Learning"
+             xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
+             xmlns:view="clr-namespace:Word_Learning.MVVM.View"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:LearningViewModel}">
+                <view:LearningView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
