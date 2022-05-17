@@ -6,13 +6,15 @@
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="RadioButton">
                         <Grid VerticalAlignment="Stretch"
                               HorizontalAlignment="Stretch"
                               Background="{TemplateBinding Background}">
-                            <TextBlock Text="Hello"
+                            
+                            <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
+                                       Foreground="#D6D6D6"
                                        Margin="5"/>
                         </Grid>
                     </ControlTemplate>
@@ -23,8 +25,10 @@
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#FFD100"/>
-                <Setter Property="Foreground" Value="Aqua"/>
+                <Setter Property="Background" Value="#202020"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#202020"/>
             </Trigger>
         </Style.Triggers>
         

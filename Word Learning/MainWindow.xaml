@@ -33,11 +33,26 @@
                     Margin="10"
                     HorizontalAlignment="Left"
                     />
+            <Button Grid.Column="1" Background="Transparent" Click="ButtonClose_Click" Style="{StaticResource CloseButtonTheme}" >
+                <Image Source="Images/closeButton.png"/>
+            </Button>
             <StackPanel Grid.Column="0" Grid.Row="1">
-                <RadioButton Content="Nauka"
+                
+                <RadioButton Content="Learning"
                              Height="50"
-                             Foreground="#D6D6D6"
-                             FontSize="14"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Definition quiz"
+                             Height="50"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Synonyms quiz"
+                             Height="50"
+                             FontSize="16"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Statistics"
+                             Height="50"
+                             FontSize="16"
                              Style="{StaticResource MenuButtonTheme}"/>
             </StackPanel>
         </Grid>
