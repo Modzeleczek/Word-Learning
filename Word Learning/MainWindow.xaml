@@ -4,15 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Learning"
+        Icon="Images/dictionary.png"
         mc:Ignorable="d"
         Height="600" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        MouseLeftButtonDown="Window_MouseDown">
     <Border Background="#333533"
             CornerRadius="20"
-            BorderThickness="2px"
+            BorderThickness="3px"
             BorderBrush="#202020">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -20,7 +22,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="75" x:Name="Row"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Text="Word Learning"
@@ -35,6 +37,9 @@
                     />
             <Button Grid.Column="1" Background="Transparent" Click="ButtonClose_Click" Style="{StaticResource CloseButtonTheme}" >
                 <Image Source="Images/closeButton.png"/>
+            </Button>
+            <Button Grid.Column="1" Background="Transparent" Click="ButtonMinimalize_Click" Style="{StaticResource CloseButtonTheme}" Margin="50,10,40,50" >
+                <Image Source="Images/minimalizeButton.png"/>
             </Button>
             <StackPanel Grid.Column="0" Grid.Row="1">
                 
