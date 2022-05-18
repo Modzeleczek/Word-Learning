@@ -5,9 +5,9 @@ namespace Word_Learning.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         public RelayCommand SwitchToLearning { get; private set; }
-        public RelayCommand SwitchToStatistics { get; private set; }    
+        public RelayCommand SwitchToStatistics { get; private set; }
+        public RelayCommand SwitchToDefinitionQuiz { get; private set; }
         private object currentView;
-        public StatisticsViewModel StatisticsVM { get; set; }
         public object CurrentModeVM
         {
             get { return currentView; }
@@ -16,11 +16,18 @@ namespace Word_Learning.MVVM.ViewModel
 
         public MainViewModel()
         {
-            StatisticsVM = new StatisticsViewModel();
             var learningVM = new LearningViewModel();
+            var statisticsVM = new StatisticsViewModel();
+            var definitionQuizVM = new DefinitionQuizViewModel();
             CurrentModeVM = learningVM;
-            SwitchToLearning = new RelayCommand(o => CurrentModeVM = learningVM);
-            SwitchToStatistics = new RelayCommand(o => CurrentModeVM = StatisticsVM);
+            SwitchToLearning = new RelayCommand(o => { if (CurrentModeVM != learningVM) CurrentModeVM = learningVM; });
+            SwitchToStatistics = new RelayCommand(o => { if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM; });
+            SwitchToDefinitionQuiz = new RelayCommand(o =>
+            {
+                if (CurrentModeVM == definitionQuizVM) return;
+                definitionQuizVM.GenerateQuestion();
+                CurrentModeVM = definitionQuizVM;
+            });
         }
     }
 }

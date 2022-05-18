@@ -2,9 +2,9 @@
 
 namespace Word_Learning.MVVM.View
 {
-    public partial class StatisticsView : UserControl
+    public partial class DefinitionQuizView : UserControl
     {
-        public StatisticsView()
+        public DefinitionQuizView()
         {
             InitializeComponent();
         }

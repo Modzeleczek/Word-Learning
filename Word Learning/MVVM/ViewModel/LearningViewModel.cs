@@ -6,7 +6,7 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class LearningViewModel : ObservableObject
     {
-        public ObservableCollection<Word> Words { get; } = new ObservableCollection<Word>();
+        public ObservableCollection<Word> Words { get; }
         private int selectedIndex;
         public int SelectedIndex
         {
@@ -26,9 +26,7 @@ namespace Word_Learning.MVVM.ViewModel
 
         public LearningViewModel()
         {
-            Words.Add(new Word("car", "noun", "A vehicle.", "I can drive a car.", new string[] { }, 0));
-            Words.Add(new Word("computer", "noun", "A complex calculator.", "My friend has a computer.", new string[] { }, 1));
-            Words.Add(new Word("a", "b", "c", "d", new string[] { "e", "f" }, 2));
+            Words = new ObservableCollection<Word>(WordStorage.Instance.Words);
             SelectedIndex = -1;
         }
     }

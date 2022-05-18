@@ -69,6 +69,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\DefinitionQuizView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\LearningView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,11 +100,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\Word.cs" />
+    <Compile Include="MVVM\Model\WordStorage.cs" />
+    <Compile Include="MVVM\ViewModel\DefinitionQuizViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LearningViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
+    <Compile Include="MVVM\View\DefinitionQuizView.xaml.cs">
+      <DependentUpon>DefinitionQuizView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\LearningView.xaml.cs">
       <DependentUpon>LearningView.xaml</DependentUpon>
     </Compile>
