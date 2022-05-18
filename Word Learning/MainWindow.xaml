@@ -30,9 +30,7 @@
                 <RowDefinition Height="75" x:Name="Row"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ContentControl Grid.RowSpan="2"
-                Grid.Column="1"
-                Content="{Binding Path=CurrentModeVM}"/>
+
             <TextBlock Text="Word Learning"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"
@@ -47,7 +45,7 @@
                 <Image Source="Images/closeButton.png"/>
             </Button>
             <Button Grid.Column="1" Background="Transparent" Click="ButtonMinimalize_Click" Style="{StaticResource CloseButtonTheme}" Margin="50,10,40,50" >
-                <Image Source="Images/minimalizeButton.png"/>
+                <Image Source="Images/minimizeButton.png"/>
             </Button>
             <StackPanel Grid.Column="0" Grid.Row="1">
                 
@@ -68,8 +66,15 @@
                 <RadioButton Content="Statistics"
                              Height="50"
                              FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding Path=SwitchToStatistics}"/>
             </StackPanel>
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentModeVM}"/>
+
+
         </Grid>
     </Border>
 </Window>

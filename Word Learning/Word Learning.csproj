@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\StatisticsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\WordDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,12 +98,16 @@
     <Compile Include="MVVM\Model\Word.cs" />
     <Compile Include="MVVM\ViewModel\LearningViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
     <Compile Include="MVVM\View\LearningView.xaml.cs">
       <DependentUpon>LearningView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\LevelToBrushConverter.cs" />
+    <Compile Include="MVVM\View\StatisticsView.xaml.cs">
+      <DependentUpon>StatisticsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\WordDetailsView.xaml.cs">
       <DependentUpon>WordDetailsView.xaml</DependentUpon>
     </Compile>
@@ -137,7 +145,7 @@
     <Resource Include="Images\closeButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\minimalizeButton.png" />
+    <Resource Include="Images\minimizeButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

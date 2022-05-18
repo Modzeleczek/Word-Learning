@@ -7,68 +7,71 @@
   xmlns:converters="clr-namespace:Word_Learning.MVVM.View.Converters"
   xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel" xmlns:view="clr-namespace:Word_Learning.MVVM.View"
              mc:Ignorable="d"
-  d:DesignHeight="450" d:DesignWidth="800">
+  d:DesignHeight="600" d:DesignWidth="1000">
 
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="*"/>
-    </Grid.RowDefinitions>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <TextBox Grid.Column="0"
+        <TextBox Grid.Column="0"
       Grid.Row="0"
       VerticalContentAlignment="Center"
       HorizontalAlignment="Left"
-      Margin="5"
+      Margin="20,-60,0,65"
       Style="{StaticResource ModernTextBox}"/>
 
-    <ListBox Grid.Column="0"
+        <ListBox Grid.Column="0"
       Grid.Row="1"
       ItemsSource="{Binding Path=Words, Mode=OneWay}"
-      SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}">
-      <ListBox.ItemTemplate>
-        <DataTemplate>
-          <controls:ClippedBorder BorderThickness="4"
+      SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
+        Background="#333533"
+                 BorderThickness="0"
+                 Margin="10,-40,0,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <controls:ClippedBorder BorderThickness="4"
             Background="White"
             CornerRadius="15"
             Margin="5">
-            <StackPanel Orientation="Horizontal">
-              <Rectangle DockPanel.Dock="Left" Width="40" Height="40">
-                <Rectangle.Style>
-                  <Style TargetType="{x:Type Rectangle}">
-                    <Setter Property="Fill"
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle DockPanel.Dock="Left" Width="40" Height="40">
+                                <Rectangle.Style>
+                                    <Style TargetType="{x:Type Rectangle}">
+                                        <Setter Property="Fill"
                     Value="{Binding Path=GoodAnswers,
                       Converter={x:Static converters:LevelToBrushConverter.Instance}}"/>
-                  </Style>
-                </Rectangle.Style>
-              </Rectangle>
-              <Label VerticalContentAlignment="Center"
+                                    </Style>
+                                </Rectangle.Style>
+                            </Rectangle>
+                            <Label VerticalContentAlignment="Center"
                 Content="{Binding Path=Word_}"
                 Width="100" Height="40"/>
-            </StackPanel>
-          </controls:ClippedBorder>
-        </DataTemplate>
-      </ListBox.ItemTemplate>
-    </ListBox>
+                        </StackPanel>
+                    </controls:ClippedBorder>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-    <ContentControl Grid.Row="1"
+        <ContentControl Grid.Row="1"
       Grid.Column="1"
       Content="{Binding Path=CurrentWordVM, Mode=OneWay}">
-      <ContentControl.Style>
-        <Style TargetType="{x:Type ContentControl}">
-          <Setter Property="Visibility" Value="Visible"/>
-          <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=SelectedIndex}"
+            <ContentControl.Style>
+                <Style TargetType="{x:Type ContentControl}">
+                    <Setter Property="Visibility" Value="Visible"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=SelectedIndex}"
               Value="-1">
-              <Setter Property="Visibility" Value="Collapsed"/>
-            </DataTrigger>
-          </Style.Triggers>
-        </Style>
-      </ContentControl.Style>
-    </ContentControl>
-  </Grid>
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
 </UserControl>
