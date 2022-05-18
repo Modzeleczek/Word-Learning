@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace Word_Learning.MVVM.View
+namespace Word_Learning.MVVM.View.Converters
 {
     public class LevelToBrushConverter : IValueConverter
     {

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Learning"
+        xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
         Icon="Images/dictionary.png"
         mc:Ignorable="d"
         Height="600" Width="1000"
@@ -12,6 +13,10 @@
         Background="Transparent"
         AllowsTransparency="True"
         MouseLeftButtonDown="Window_MouseDown">
+    <Window.DataContext>
+      <viewModel:MainViewModel/>
+    </Window.DataContext>
+
     <Border Background="#333533"
             CornerRadius="20"
             BorderThickness="3px"
@@ -25,6 +30,9 @@
                 <RowDefinition Height="75" x:Name="Row"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <ContentControl Grid.RowSpan="2"
+                Grid.Column="1"
+                Content="{Binding Path=CurrentModeVM}"/>
             <TextBlock Text="Word Learning"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Right"
@@ -46,12 +54,14 @@
                 <RadioButton Content="Learning"
                              Height="50"
                              FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding Path=SwitchToLearning}"/>
                 <RadioButton Content="Definition quiz"
                              Height="50"
                              FontSize="16"
                              Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Synonyms quiz"
+                <RadioButton Content="Synonym quiz"
                              Height="50"
                              FontSize="16"
                              Style="{StaticResource MenuButtonTheme}"/>
