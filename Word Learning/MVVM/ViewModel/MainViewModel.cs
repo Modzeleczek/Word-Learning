@@ -7,19 +7,17 @@ namespace Word_Learning.MVVM.ViewModel
         public RelayCommand SwitchToLearning { get; private set; }
 
         private object currentView;
-        public object CurrentView
+        public object CurrentModeVM
         {
             get { return currentView; }
-            set { currentView = value; OnPropertyChanged(nameof(currentView)); }
+            set { currentView = value; OnPropertyChanged(nameof(CurrentModeVM)); }
         }
 
         public MainViewModel()
         {
             var learningVM = new LearningViewModel();
-            SwitchToLearning = new RelayCommand(o =>
-            {
-                CurrentView = learningVM;
-            });
+            CurrentModeVM = learningVM;
+            SwitchToLearning = new RelayCommand(o => CurrentModeVM = learningVM);
         }
     }
 }

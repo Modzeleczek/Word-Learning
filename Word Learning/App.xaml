@@ -16,6 +16,9 @@
             <DataTemplate DataType="{x:Type viewModel:LearningViewModel}">
                 <view:LearningView/>
             </DataTemplate>
-        </ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModel:WordDetailsViewModel}">
+                <view:WordDetailsView/>
+            </DataTemplate>
+    </ResourceDictionary>
     </Application.Resources>
 </Application>
