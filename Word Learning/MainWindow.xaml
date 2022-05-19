@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
+        Style="{StaticResource Window}"
         MouseLeftButtonDown="Window_MouseDown">
     <Window.DataContext>
       <viewModel:MainViewModel/>
@@ -36,7 +37,8 @@
                        HorizontalAlignment="Right"
                        Foreground="#D6D6D6"
                        FontSize="22"
-                       Margin="0,0,20,0"/>
+                       Margin="0,0,20,0"
+                       FontFamily="Red Hat Display"/>
             <Image  Source="/Images/dictionary.png"
                     Margin="10"
                     HorizontalAlignment="Left"
