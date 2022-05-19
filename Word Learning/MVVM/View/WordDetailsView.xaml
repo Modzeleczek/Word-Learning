@@ -5,7 +5,8 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
   mc:Ignorable="d"
-  d:DesignHeight="600" d:DesignWidth="1000">
+  d:DesignHeight="600" d:DesignWidth="1000"
+             Style="{StaticResource UserControl}">
   <UserControl.Resources>
     <Style x:Key="PropertyLabel"
       TargetType="{x:Type Label}">
