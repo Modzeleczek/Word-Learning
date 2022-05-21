@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Theme/CloseButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/Global.xaml"/>
                 <ResourceDictionary Source="Theme/StatisticField.xaml"/>
+                <ResourceDictionary Source="Theme/QuizButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:LearningViewModel}">

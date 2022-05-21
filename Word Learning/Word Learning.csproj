@@ -93,6 +93,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Theme\QuizButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\StatisticField.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

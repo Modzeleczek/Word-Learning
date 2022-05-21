@@ -7,77 +7,161 @@
   d:DesignHeight="450" d:DesignWidth="800"
              Style="{StaticResource UserControl}">
 
-  
-  <UserControl.Resources>
-    <Style x:Key="DefinitionLabel"
-    TargetType="{x:Type Label}">
-      <Setter Property="Margin" Value="5"/>
-      <Setter Property="Foreground" Value="#D6D6D6"/>
-      <Setter Property="FontSize" Value="24"/>
-    </Style>
-    <Style x:Key="DefinitionValue"
-    TargetType="{x:Type TextBlock}">
-      <Setter Property="Margin" Value="9,0,0,10"/>
-      <Setter Property="Background" Value="#333533"/>
-      <Setter Property="Foreground" Value="#D6D6D6"/>
-      <Setter Property="FontSize" Value="14"/>
-    </Style>
-    <Style x:Key="AnswerButton"
-    TargetType="{x:Type Button}">
-      <Setter Property="Margin" Value="9,0,0,10"/>
-      <Setter Property="Background" Value="#333533"/>
-      <Setter Property="Foreground" Value="#D6D6D6"/>
-      <Setter Property="FontSize" Value="14"/>
-      <Setter Property="Template">
-        <Setter.Value>
-          <ControlTemplate TargetType="{x:Type Button}">
-            <Border Background="{TemplateBinding Background}">
-              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-      <Style.Triggers>
-        <Trigger Property="IsMouseOver" Value="True">
-          <Setter Property="Background" Value="#202020"/>
-        </Trigger>
-      </Style.Triggers>
-    </Style>
-  </UserControl.Resources>
 
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="auto"/>
-    </Grid.RowDefinitions>
-    <Label Grid.Row="0" Content="Pick the described word"
+    <UserControl.Resources>
+        <Style x:Key="DefinitionLabel"
+    TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#D6D6D6"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style x:Key="DefinitionValue"
+    TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="9,0,0,10"/>
+            <Setter Property="Background" Value="#333533"/>
+            <Setter Property="Foreground" Value="#D6D6D6"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="AnswerButton"
+    TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="9,0,0,10"/>
+            <Setter Property="Background" Value="#333533"/>
+            <Setter Property="Foreground" Value="#D6D6D6"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#202020"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" MaxHeight="400" MinHeight="200"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Content="Pick the described word"
     Style="{StaticResource DefinitionLabel}"/>
-    <TextBlock Grid.Row="1"
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
       Text="{Binding Path=Word.Definition,
         Mode=OneWay}"
       Style="{StaticResource DefinitionValue}"/>
+        <Button
+            Grid.Column="0"
+            Grid.Row="2"
+               Foreground="#202020"
+               Padding="10"
+               Margin="10"
+               Command="{Binding AnswerClick[0]}"
+               Content="{Binding Path=Answer[0]}"
+               BorderBrush="#202020"
+               BorderThickness="3">
 
-      
-      
-    <!--<Button Grid.Row="2"
-      Command="{Binding AnswerClick[0]}"
-      Content="{Binding Path=Answer[0]}"
-      Style="{StaticResource AnswerButton}"/>
-    <Button Grid.Row="3"
-      Command="{Binding AnswerClick[1]}"
-      Content="{Binding Path=Answer[1]}"
-      Style="{StaticResource AnswerButton}"/>
-    <Button Grid.Row="4"
-      Command="{Binding AnswerClick[2]}"
-      Content="{Binding Path=Answer[2]}"
-      Style="{StaticResource AnswerButton}"/>
-    <Button Grid.Row="5"
-      Command="{Binding AnswerClick[3]}"
-      Content="{Binding Path=Answer[3]}"
-      Style="{StaticResource AnswerButton}"/>-->
-  </Grid>
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#333533"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#ebc102" Offset="0"/>
+                    <GradientStop Color="#c4a204" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="2"
+               Foreground="#202020"
+               Padding="10"
+               Margin="10"
+               Command="{Binding AnswerClick[1]}"
+               Content="{Binding Path=Answer[1]}"
+               BorderBrush="#202020"
+               BorderThickness="3">
+
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#ebc102" Offset="0"/>
+                    <GradientStop Color="#c4a204" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+        <Button
+            Grid.Column="0"
+            Grid.Row="3"
+               Foreground="#202020"
+               Padding="10"
+               Margin="10"
+               Command="{Binding AnswerClick[2]}"
+               Content="{Binding Path=Answer[2]}"
+               BorderBrush="#202020"
+               BorderThickness="3">
+
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#ebc102" Offset="0"/>
+                    <GradientStop Color="#c4a204" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+        <Button
+            Grid.Column="1"
+            Grid.Row="3"
+               Foreground="#202020"
+               Padding="10"
+               Margin="10"
+               Command="{Binding AnswerClick[3]}"
+               Content="{Binding Path=Answer[3]}"
+               BorderBrush="#202020"
+               BorderThickness="3">
+
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#ebc102" Offset="0"/>
+                    <GradientStop Color="#c4a204" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+
+        </Button>
+    </Grid>
 </UserControl>
