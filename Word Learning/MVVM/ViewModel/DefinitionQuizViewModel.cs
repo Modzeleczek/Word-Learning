@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
+using Word_Learning.MVVM.View;
 
 namespace Word_Learning.MVVM.ViewModel
 {
@@ -36,9 +37,20 @@ namespace Word_Learning.MVVM.ViewModel
                 AnswerClick[i] = new RelayCommand(o =>
                 {
                     if (iCopy == correctAnswer)
-                        MessageBox.Show("Correct answer.");
+                    {
+                        CorrectCustomMessageBox AnswerWindow = new CorrectCustomMessageBox();
+                        AnswerWindow.Owner = Application.Current.MainWindow;
+                        AnswerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        AnswerWindow.ShowDialog();
+
+                    }
                     else
-                        MessageBox.Show("Incorrect answer.");
+                    {
+                        IncorrectCustomMessageBox AnswerWindow = new IncorrectCustomMessageBox();
+                        AnswerWindow.Owner = Application.Current.MainWindow;
+                        AnswerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                        AnswerWindow.ShowDialog();
+                    }
                 });
             }
         }
