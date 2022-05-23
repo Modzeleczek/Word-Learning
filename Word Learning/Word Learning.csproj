@@ -69,7 +69,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\CorrectCustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\DefinitionQuizView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\IncorrectCustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,8 +127,14 @@
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
+    <Compile Include="MVVM\View\CorrectCustomMessageBox.xaml.cs">
+      <DependentUpon>CorrectCustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\DefinitionQuizView.xaml.cs">
       <DependentUpon>DefinitionQuizView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\IncorrectCustomMessageBox.xaml.cs">
+      <DependentUpon>IncorrectCustomMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\LearningView.xaml.cs">
       <DependentUpon>LearningView.xaml</DependentUpon>
