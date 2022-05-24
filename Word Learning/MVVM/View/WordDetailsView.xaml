@@ -3,7 +3,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
+  xmlns:converters="clr-namespace:Word_Learning.MVVM.View.Converters"
   mc:Ignorable="d"
   d:DesignHeight="600" d:DesignWidth="1000"
              Style="{StaticResource UserControl}">
@@ -12,8 +12,6 @@
       TargetType="{x:Type Label}">
       <Setter Property="Margin" Value="5,0,0,5"/>
       <Setter Property="Foreground" Value="#D6D6D6"/>
-      <Setter Property="FontSize" Value="16"/>
-
     </Style>
     <Style x:Key="PropertyValue"
       TargetType="{x:Type TextBox}">
@@ -30,32 +28,40 @@
     <StackPanel>
       <Label Content="Word"
         Style="{StaticResource PropertyLabel}"/>
-      <TextBox Text="{Binding Path=Word.Word_,
-        Mode=OneWay}"
+      <TextBox Text="{Binding Path=Word.Word_, Mode=OneWay}"
         Style="{StaticResource PropertyValue}"/>
       
       <Label Content="Part of speech"
         Style="{StaticResource PropertyLabel}"/>
-      <TextBox Text="{Binding Path=Word.PartOfSpeech,
-        Mode=OneWay}"
+      <TextBox Text="{Binding Path=Word.PartOfSpeech, Mode=OneWay}"
         Style="{StaticResource PropertyValue}"/>
 
       <Label Content="Definition"
         Style="{StaticResource PropertyLabel}"/>
-      <TextBox Text="{Binding Path=Word.Definition,
-        Mode=OneWay}"
+      <TextBox Text="{Binding Path=Word.Definition, Mode=OneWay}"
         Style="{StaticResource PropertyValue}"/>
 
       <Label Content="Example"
-        Style="{StaticResource PropertyLabel}"/>
-      <TextBox Text="{Binding Path=Word.Example}"
-        Style="{StaticResource PropertyValue}"/>
+        Style="{StaticResource PropertyLabel}"
+        Visibility="{Binding Path=Text,
+        ElementName=ExampleTextBox,
+        Converter={x:Static converters:TextEmptyToVisibilityConverter.Instance}}"/>
+      <TextBox Text="{Binding Path=Word.Example, Mode=OneWay}"
+        Style="{StaticResource PropertyValue}"
+        Name="ExampleTextBox"
+        Visibility="{Binding Path=Text, RelativeSource={RelativeSource Self},
+        Converter={x:Static converters:TextEmptyToVisibilityConverter.Instance}}"/>
 
       <Label Content="Synonyms"
-        Style="{StaticResource PropertyLabel}"/>
-      <TextBox Text="{Binding Path=Word.JoinedSynonyms,
-        Mode=OneWay}"
-        Style="{StaticResource PropertyValue}"/>
+        Style="{StaticResource PropertyLabel}"
+        Visibility="{Binding Path=Text,
+        ElementName=SynonymsTextBox,
+        Converter={x:Static converters:TextEmptyToVisibilityConverter.Instance}}"/>
+      <TextBox Text="{Binding Path=Word.JoinedSynonyms, Mode=OneWay}"
+        Style="{StaticResource PropertyValue}"
+        Name="SynonymsTextBox"
+        Visibility="{Binding Path=Text, RelativeSource={RelativeSource Self},
+        Converter={x:Static converters:TextEmptyToVisibilityConverter.Instance}}"/>
     </StackPanel>
   </ScrollViewer>
 </UserControl>

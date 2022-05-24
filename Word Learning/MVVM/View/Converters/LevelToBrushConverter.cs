@@ -17,7 +17,8 @@ namespace Word_Learning.MVVM.View.Converters
         {
             if (value == null) // throw new ArgumentException("Value is null.");
                 return DependencyProperty.UnsetValue;
-            var colorMap = new Color[] { // poziomy nauczenia słowa
+            var colorMap = new Color[] // poziomy nauczenia słowa
+            {
                 Color.FromRgb(255/1, 255/4, 0), // czerwony, jeżeli użytkownik 0 razy z rzędu dobrze dopasował słowo do jego definicji
                 Color.FromRgb(255/2, 255/3, 0), // 1 raz
                 Color.FromRgb(255/3, 255/2, 0), // 2 razy
