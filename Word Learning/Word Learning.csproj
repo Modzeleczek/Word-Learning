@@ -127,6 +127,7 @@
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
+    <Compile Include="MVVM\View\Converters\TextEmptyToVisibilityConverter.cs" />
     <Compile Include="MVVM\View\CorrectCustomMessageBox.xaml.cs">
       <DependentUpon>CorrectCustomMessageBox.xaml</DependentUpon>
     </Compile>
