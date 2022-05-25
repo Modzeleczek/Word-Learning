@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Word_Learning.MVVM.View.LearningView"
+<UserControl x:Class="Word_Learning.MVVM.View.LearningView"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -20,7 +20,6 @@
       </Grid.RowDefinitions>
       <Grid>
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="auto"/>
           <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
@@ -30,7 +29,7 @@
           Width="200"
           Text="{Binding Path=SearchText, Mode=TwoWay,
           UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Grid.Column="1"
+        <!--<Button Grid.Column="1"
           VerticalContentAlignment="Center"
           Margin="0,0,10,0"
           Width="100"
@@ -38,9 +37,18 @@
           Foreground="#D6D6D6"
           BorderThickness="0"
           Content="{Binding Path=WordCategory, Mode=OneWay}"
-          Command="{Binding Path=SwitchCategoryCommand}"/>
+          Command="{Binding Path=SwitchCategoryCommand}"/>-->
+        <Button Grid.Column="1"
+          Background="Transparent"
+          Click="ButtonDownload_Click"
+          Style="{StaticResource CloseButtonTheme}"
+          Margin="0,0,0,0"
+          Height="30">
+          <Image Source="/Images/downloadButton.png"/>
+        </Button>
       </Grid>
       <ListBox Grid.Row="1"
+        Margin="0,10,0,0"
         ItemsSource="{Binding Path=Words, Mode=OneWay}"
         SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
         Background="Transparent"
