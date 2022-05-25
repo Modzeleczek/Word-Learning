@@ -94,7 +94,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\LoadingWindow.xaml">
+    <Page Include="MVVM\View\DownloadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +131,7 @@
     <Compile Include="MVVM\Model\Word.cs" />
     <Compile Include="MVVM\Model\WordStorage.cs" />
     <Compile Include="MVVM\ViewModel\DefinitionQuizViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\DownloadViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LearningViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
@@ -156,8 +157,8 @@
       <DependentUpon>LearningView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\LevelToBrushConverter.cs" />
-    <Compile Include="MVVM\View\LoadingWindow.xaml.cs">
-      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    <Compile Include="MVVM\View\DownloadWindow.xaml.cs">
+      <DependentUpon>DownloadWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>
@@ -202,9 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\minimizeButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MVVM\View\downloadButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

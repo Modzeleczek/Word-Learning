@@ -12,7 +12,7 @@ namespace Word_Learning.MVVM.View
 
         private void ButtonDownload_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            LoadingWindow window = new LoadingWindow();
+            DownloadWindow window = new DownloadWindow();
             window.Owner = Application.Current.MainWindow;
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.ShowDialog();
