@@ -5,75 +5,89 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:controls="clr-namespace:Word_Learning.MVVM.View.Controls"
   xmlns:converters="clr-namespace:Word_Learning.MVVM.View.Converters"
-  xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel" xmlns:view="clr-namespace:Word_Learning.MVVM.View"
-             mc:Ignorable="d"
+  mc:Ignorable="d"
   d:DesignHeight="600" d:DesignWidth="1000"
-             Style="{StaticResource UserControl}">
-
-    <Grid>
+  Style="{StaticResource UserControl}">
+  <Grid Margin="10">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="2*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Grid Grid.Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+          <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
         <controls:SearchTextBox Grid.Column="0"
-      Grid.Row="0"
-      VerticalContentAlignment="Center"
-      HorizontalAlignment="Left"
-      Margin="20,-60,0,65"
-      Text="{Binding Path=SearchText, Mode=TwoWay,
-      UpdateSourceTrigger=PropertyChanged}"/>
-
-        <ListBox Grid.Column="0"
-      Grid.Row="1"
-      ItemsSource="{Binding Path=Words, Mode=OneWay}"
-      SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
-        Background="#333533"
-                 BorderThickness="0"
-                 Margin="10,-40,0,10">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <controls:ClippedBorder BorderThickness="4"
-            Background="#D6D6D6"
-            CornerRadius="15"
-            Margin="5">
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle DockPanel.Dock="Left" Width="40" Height="40">
-                                <Rectangle.Style>
-                                    <Style TargetType="{x:Type Rectangle}">
-                                        <Setter Property="Fill"
-                    Value="{Binding Path=GoodAnswers,
-                      Converter={x:Static converters:LevelToBrushConverter.Instance}}"/>
-                                    </Style>
-                                </Rectangle.Style>
-                            </Rectangle>
-                            <Label VerticalContentAlignment="Center"
-                Content="{Binding Path=Word_}"
-                Width="100" Height="40"/>
-                        </StackPanel>
-                    </controls:ClippedBorder>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <ContentControl Grid.Row="1"
-      Grid.Column="1"
-      Content="{Binding Path=CurrentWordVM, Mode=OneWay}">
-            <ContentControl.Style>
-                <Style TargetType="{x:Type ContentControl}">
-                    <Setter Property="Visibility" Value="Visible"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=SelectedIndex}"
-              Value="-1">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ContentControl.Style>
-        </ContentControl>
+          VerticalContentAlignment="Center"
+          HorizontalAlignment="Left"
+          Width="200"
+          Text="{Binding Path=SearchText, Mode=TwoWay,
+          UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Column="1"
+          VerticalContentAlignment="Center"
+          Margin="0,0,10,0"
+          Width="100"
+          Background="Transparent"
+          Foreground="#D6D6D6"
+          BorderThickness="0"
+          Content="{Binding Path=WordCategory, Mode=OneWay}"
+          Command="{Binding Path=SwitchCategoryCommand}"/>
+      </Grid>
+      <ListBox Grid.Row="1"
+        ItemsSource="{Binding Path=Words, Mode=OneWay}"
+        SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
+        Background="Transparent"
+        BorderThickness="0">
+        <ListBox.Resources>
+          <!--Defines a context menu-->
+          <ContextMenu x:Key="MyElementMenu">
+            <MenuItem Header="Delete"/>
+          </ContextMenu>
+          <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+          <Style TargetType="{x:Type ListBoxItem}">
+            <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
+          </Style>
+        </ListBox.Resources>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <controls:ClippedBorder BorderThickness="4"
+              Background="#D6D6D6"
+              CornerRadius="15"
+              Margin="5">
+              <StackPanel Orientation="Horizontal">
+                <Rectangle DockPanel.Dock="Left" Width="40" Height="40">
+                  <Rectangle.Style>
+                    <Style TargetType="{x:Type Rectangle}">
+                      <Setter Property="Fill" Value="{Binding Path=GoodAnswers,
+                        Converter={x:Static converters:LevelToBrushConverter.Instance}}"/>
+                    </Style>
+                  </Rectangle.Style>
+                </Rectangle>
+                <Label VerticalContentAlignment="Center" Content="{Binding Path=Word_}" Width="100" Height="40"/>
+              </StackPanel>
+            </controls:ClippedBorder>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
     </Grid>
+    <ContentControl Grid.Column="1" Content="{Binding Path=CurrentWordVM, Mode=OneWay}">
+      <ContentControl.Style>
+        <Style TargetType="{x:Type ContentControl}">
+          <Setter Property="Visibility" Value="Visible"/>
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=SelectedIndex}" Value="-1">
+              <Setter Property="Visibility" Value="Collapsed"/>
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ContentControl.Style>
+    </ContentControl>
+  </Grid>
 </UserControl>

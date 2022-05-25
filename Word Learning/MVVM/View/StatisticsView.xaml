@@ -7,95 +7,95 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1000"
              Style="{StaticResource UserControl}">
-    <StackPanel>
+  <StackPanel>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Statistics"
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <TextBlock Text="Statistics"
                    Foreground="#D6D6D6"
                    FontSize="30"
                    HorizontalAlignment="Left"
                    Grid.Row="0"
                    Grid.Column="0"
-                   Margin="20,-60,0,0"/>
-            <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource Border}">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffd100" Offset="0.0"/>
-                        <GradientStop Color="#c7a302" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Words downloaded" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
-                    <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-                </Grid>
-                
-            </Border>
-            <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource Border}">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffd100" Offset="0.0"/>
-                        <GradientStop Color="#c7a302" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Correct definition matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
-                    <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-                </Grid>
-                
-
-            </Border>
-            <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource Border}">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffd100" Offset="0.0"/>
-                        <GradientStop Color="#c7a302" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Words learned" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
-                    <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-                </Grid>
-
-            </Border>
-            <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource Border}">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffd100" Offset="0.0"/>
-                        <GradientStop Color="#c7a302" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Correct synonym matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
-                    <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-                </Grid>
-
-            </Border>
+                   Margin="20,0,0,0"/>
+      <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource Border}">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+            <GradientStop Color="#ffd100" Offset="0.0"/>
+            <GradientStop Color="#c7a302" Offset="1"/>
+          </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <TextBlock Text="Words downloaded" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
+          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
         </Grid>
 
-    </StackPanel>
+      </Border>
+      <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource Border}">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+            <GradientStop Color="#ffd100" Offset="0.0"/>
+            <GradientStop Color="#c7a302" Offset="1"/>
+          </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <TextBlock Text="Correct definition matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
+          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
+        </Grid>
+
+
+      </Border>
+      <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource Border}">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+            <GradientStop Color="#ffd100" Offset="0.0"/>
+            <GradientStop Color="#c7a302" Offset="1"/>
+          </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <TextBlock Text="Words learned" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
+          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
+        </Grid>
+
+      </Border>
+      <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource Border}">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+            <GradientStop Color="#ffd100" Offset="0.0"/>
+            <GradientStop Color="#c7a302" Offset="1"/>
+          </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <TextBlock Text="Correct synonym matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
+          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
+        </Grid>
+
+      </Border>
+    </Grid>
+
+  </StackPanel>
 </UserControl>

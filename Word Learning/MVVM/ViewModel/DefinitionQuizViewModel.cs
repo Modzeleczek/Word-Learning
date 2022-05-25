@@ -24,7 +24,7 @@ namespace Word_Learning.MVVM.ViewModel
 
         public void GenerateQuestion()
         {
-            var wordsDB = WordStorage.Instance.Words;
+            var wordsDB = WordStorage.Instance.DownloadedWords;
             Word = wordsDB[0];
             Answer[0] = wordsDB[2].Word_;
             Answer[1] = wordsDB[1].Word_;
@@ -42,7 +42,6 @@ namespace Word_Learning.MVVM.ViewModel
                         AnswerWindow.Owner = Application.Current.MainWindow;
                         AnswerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                         AnswerWindow.ShowDialog();
-
                     }
                     else
                     {

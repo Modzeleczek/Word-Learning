@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Word_Learning.MVVM.Model
 {
@@ -10,7 +11,7 @@ namespace Word_Learning.MVVM.Model
         public string Example { get; set; }
         public ICollection<string> Synonyms { get; set; }
         public int GoodAnswers { get; set; }
-        public string JoinedSynonyms { get { return string.Join(", ", Synonyms); } }
+        [JsonIgnore] public string JoinedSynonyms { get { return string.Join(", ", Synonyms); } }
 
         public Word(string word, string partOfSpeech, string definition, string example, ICollection<string> synonyms, int goodAnswers)
         {
