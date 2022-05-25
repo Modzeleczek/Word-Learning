@@ -20,12 +20,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Column="0"
+        <controls:SearchTextBox Grid.Column="0"
       Grid.Row="0"
       VerticalContentAlignment="Center"
       HorizontalAlignment="Left"
       Margin="20,-60,0,65"
-      Style="{StaticResource ModernTextBox}"/>
+      Text="{Binding Path=SearchText, Mode=TwoWay,
+      UpdateSourceTrigger=PropertyChanged}"/>
 
         <ListBox Grid.Column="0"
       Grid.Row="1"
