@@ -14,70 +14,70 @@
         AllowsTransparency="True"
         Style="{StaticResource Window}"
         MouseLeftButtonDown="Window_MouseDown">
-    <Window.DataContext>
-      <viewModel:MainViewModel/>
-    </Window.DataContext>
+  <Window.DataContext>
+    <viewModel:MainViewModel/>
+  </Window.DataContext>
 
-    <Border Background="#333533"
+  <Border Background="#333533"
             CornerRadius="20"
             BorderThickness="3px"
             BorderBrush="#202020">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75" x:Name="Row"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Text="Word Learning"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       Foreground="#D6D6D6"
-                       FontSize="22"
-                       Margin="0,0,20,0"
-                       FontFamily="Red Hat Display"/>
-            <Image  Source="/Images/dictionary.png"
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="0.3*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <StackPanel Orientation="Vertical" Grid.Column="0">
+        <StackPanel Orientation="Horizontal">
+          <Image Source="/Images/dictionary.png"
                     Margin="10"
-                    HorizontalAlignment="Left"
-                    />
-            <Button Grid.Column="1" Background="Transparent" Click="ButtonClose_Click" Style="{StaticResource CloseButtonTheme}" >
-                <Image Source="Images/closeButton.png"/>
-            </Button>
-            <Button Grid.Column="1" Background="Transparent" Click="ButtonMinimalize_Click" Style="{StaticResource CloseButtonTheme}" Margin="50,10,40,50" >
-                <Image Source="Images/minimizeButton.png"/>
-            </Button>
-            <StackPanel Grid.Column="0" Grid.Row="1">
-                
-                <RadioButton Content="Learning"
-                             Height="50"
-                             FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
-                             Command="{Binding Path=SwitchToLearning}"/>
-                <RadioButton Content="Definition quiz"
-                             Height="50"
-                             FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Path=SwitchToDefinitionQuiz}"/>
-                <RadioButton Content="Synonym quiz"
-                             Height="50"
-                             FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Statistics"
-                             Height="50"
-                             FontSize="16"
-                             Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding Path=SwitchToStatistics}"/>
-            </StackPanel>
-            <ContentControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10"
-                            Content="{Binding CurrentModeVM}"/>
-
-
-        </Grid>
-    </Border>
+                    Height="50"
+                    HorizontalAlignment="Left"/>
+          <TextBlock Text="Word Learning"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    FontSize="22"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+          <RadioButton Content="Learning"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 IsChecked="True"
+                                 Command="{Binding Path=SwitchToLearning}"/>
+          <RadioButton Content="Definition quiz"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding Path=SwitchToDefinitionQuiz}"/>
+          <RadioButton Content="Synonym quiz"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+          <RadioButton Content="Statistics"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding Path=SwitchToStatistics}"/>
+        </StackPanel>
+      </StackPanel>
+      <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+          <Button DockPanel.Dock="Right" Click="ButtonClose_Click" Style="{StaticResource CloseButtonTheme}">
+            <Image Source="/Images/closeButton.png"/>
+          </Button>
+          <Button DockPanel.Dock="Right" Click="ButtonMinimalize_Click" Style="{StaticResource CloseButtonTheme}">
+            <Image Source="Images/minimizeButton.png"/>
+          </Button>
+        </DockPanel>
+        <ContentControl Grid.Row="1"
+                Margin="10"
+                Content="{Binding CurrentModeVM}"/>
+      </Grid>
+    </Grid>
+  </Border>
 </Window>

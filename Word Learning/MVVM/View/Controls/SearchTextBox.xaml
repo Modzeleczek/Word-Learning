@@ -7,9 +7,7 @@
   d:DesignHeight="450" d:DesignWidth="800"
   Name="searchTextBox">
   <Border CornerRadius="10"
-    Background="#D6D6D6"
-    Width="200" Height="35">
-
+    Background="#D6D6D6" Height="35">
     <Grid>
       <Rectangle StrokeThickness="1"/>
 
