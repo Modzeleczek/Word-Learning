@@ -26,6 +26,9 @@
       HorizontalAlignment="Left"
       Margin="20,-60,0,65"
       Style="{StaticResource ModernTextBox}"/>
+        <Button Grid.Column="0" Grid.Row="0" Background="Transparent" Click="ButtonDownload_Click" Style="{StaticResource CloseButtonTheme}" Margin="245,-62,0,62" Width="40" Height="40" HorizontalAlignment="Left">
+            <Image Source="/MVVM/View/downloadButton.png"/>
+        </Button>
 
         <ListBox Grid.Column="0"
       Grid.Row="1"

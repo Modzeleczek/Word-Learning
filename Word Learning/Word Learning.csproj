@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\StatisticsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +144,9 @@
       <DependentUpon>LearningView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\LevelToBrushConverter.cs" />
+    <Compile Include="MVVM\View\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>
     </Compile>
@@ -172,7 +179,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\downloadButton.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\dictionary.png" />
   </ItemGroup>
@@ -181,6 +190,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\minimizeButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVM\View\downloadButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
