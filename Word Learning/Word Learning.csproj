@@ -69,6 +69,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\Controls\SearchTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\CorrectCustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,10 +113,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Theme\TextBoxTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Theme\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +127,9 @@
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
+    <Compile Include="MVVM\View\Controls\SearchTextBox.xaml.cs">
+      <DependentUpon>SearchTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Converters\TextEmptyToVisibilityConverter.cs" />
     <Compile Include="MVVM\View\CorrectCustomMessageBox.xaml.cs">
       <DependentUpon>CorrectCustomMessageBox.xaml</DependentUpon>
