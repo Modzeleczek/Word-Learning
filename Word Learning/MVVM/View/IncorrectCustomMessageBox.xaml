@@ -21,7 +21,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Incorrect answer." Grid.Row="0" Foreground="#D6D6D6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Incorrect answer." Grid.Row="0" Foreground="#D6D6D6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             <Button
             Grid.Row="1"
             Click="ButtonClose_Click"
@@ -30,6 +30,7 @@
                Margin="40,5,40,5"
                Content="OK"
                BorderBrush="#202020"
+               FontWeight="Bold"
                BorderThickness="3">
 
                 <Button.Resources>
@@ -44,8 +45,8 @@
                 </Button.Resources>
                 <Button.Background>
                     <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#ebc102" Offset="0"/>
-                        <GradientStop Color="#c4a204" Offset="1"/>
+                        <GradientStop Color="#FF7070" Offset="0"/>
+                        <GradientStop Color="#FF5252" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.Background>
 

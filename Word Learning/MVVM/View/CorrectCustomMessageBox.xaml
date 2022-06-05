@@ -21,7 +21,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Correct answer!" Grid.Row="0" Foreground="#D6D6D6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Correct answer!" Grid.Row="0" Foreground="#D6D6D6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             <Button
             Grid.Row="1"
             Click="ButtonClose_Click"
@@ -30,7 +30,8 @@
                Margin="40,5,40,5"
                Content="OK"
                BorderBrush="#202020"
-               BorderThickness="3">
+               BorderThickness="3"
+                FontWeight="Bold">
 
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -44,8 +45,8 @@
                 </Button.Resources>
                 <Button.Background>
                     <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#ebc102" Offset="0"/>
-                        <GradientStop Color="#c4a204" Offset="1"/>
+                        <GradientStop Color="#A5FF1F" Offset="0"/>
+                        <GradientStop Color="#74C200" Offset="1"/>
                     </LinearGradientBrush>
                 </Button.Background>
 

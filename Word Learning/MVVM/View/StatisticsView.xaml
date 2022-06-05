@@ -29,8 +29,8 @@
       <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource Border}">
         <Border.Background>
           <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-            <GradientStop Color="#ffd100" Offset="0.0"/>
-            <GradientStop Color="#c7a302" Offset="1"/>
+                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
+                        <GradientStop Color="#3DABFF" Offset="1"/>
           </LinearGradientBrush>
         </Border.Background>
         <Grid>
@@ -46,9 +46,9 @@
       <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource Border}">
         <Border.Background>
           <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-            <GradientStop Color="#ffd100" Offset="0.0"/>
-            <GradientStop Color="#c7a302" Offset="1"/>
-          </LinearGradientBrush>
+                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
+                        <GradientStop Color="#3DABFF" Offset="1"/>
+                    </LinearGradientBrush>
         </Border.Background>
         <Grid>
           <Grid.RowDefinitions>
@@ -64,9 +64,9 @@
       <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource Border}">
         <Border.Background>
           <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-            <GradientStop Color="#ffd100" Offset="0.0"/>
-            <GradientStop Color="#c7a302" Offset="1"/>
-          </LinearGradientBrush>
+                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
+                        <GradientStop Color="#3DABFF" Offset="1"/>
+                    </LinearGradientBrush>
         </Border.Background>
         <Grid>
           <Grid.RowDefinitions>
@@ -81,9 +81,9 @@
       <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource Border}">
         <Border.Background>
           <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-            <GradientStop Color="#ffd100" Offset="0.0"/>
-            <GradientStop Color="#c7a302" Offset="1"/>
-          </LinearGradientBrush>
+                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
+                        <GradientStop Color="#3DABFF" Offset="1"/>
+                    </LinearGradientBrush>
         </Border.Background>
         <Grid>
           <Grid.RowDefinitions>
