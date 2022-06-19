@@ -9,11 +9,7 @@ namespace Word_Learning.MVVM.ViewModel
         public Word Word
         {
             get { return word; }
-            set
-            {
-                word = value;
-                OnPropertyChanged(nameof(Word));
-            }
+            set { word = value; OnPropertyChanged(nameof(Word)); }
         }
 
         public WordDetailsViewModel() { }

@@ -6,10 +6,10 @@
   xmlns:controls="clr-namespace:Word_Learning.MVVM.View.Controls"
   mc:Ignorable="d"
   d:DesignHeight="600" d:DesignWidth="1000"
-             Style="{StaticResource UserControl}">
+  Style="{StaticResource UserControl}">
   <ScrollViewer VerticalScrollBarVisibility="Disabled">
     <StackPanel>
-      <controls:LabeledTextBox LabelText="Word" ValueText="{Binding Path=Word.Word_, Mode=OneWay}"/>
+      <controls:LabeledTextBox LabelText="Word" ValueText="{Binding Path=Word.Content, Mode=OneWay}"/>
       <controls:LabeledTextBox LabelText="Part of speech" ValueText="{Binding Path=Word.PartOfSpeech, Mode=OneWay}"/>
       <controls:LabeledTextBox LabelText="Definition" ValueText="{Binding Path=Word.Definition, Mode=OneWay}"/>
       <controls:LabeledTextBox LabelText="Example" ValueText="{Binding Path=Word.Example, Mode=OneWay}"/>

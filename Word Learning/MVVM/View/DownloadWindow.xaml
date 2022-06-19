@@ -47,7 +47,7 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Downloading..." Grid.Row="0" Foreground="#D6D6D6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Grid HorizontalAlignment="Center" Margin="20 4 20 20" Grid.Row="1">
-                <ProgressBar Template="{StaticResource ProgressBarPath}" Width="480" Height="32" Value="{Binding Path=Progress}" />
+                <ProgressBar Template="{StaticResource ProgressBarPath}" Height="32" Value="{Binding Path=Progress}" />
                 
                 <Label Content="{Binding Path=Progress}" ContentStringFormat="{}{0} %" Padding="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontStyle="Italic" Margin="0 0 10 0" Foreground="#808080" />
             </Grid>

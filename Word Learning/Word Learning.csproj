@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -81,15 +83,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\CorrectCustomMessageBox.xaml">
+    <Page Include="MVVM\View\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\DefinitionQuizView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\View\IncorrectCustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\DownloadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,8 +120,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Theme\QuizButton.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Theme\StatisticField.xaml">
       <SubType>Designer</SubType>
@@ -132,12 +134,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVVM\Model\JsonIgnoreAttribute.cs" />
+    <Compile Include="MVVM\Model\QuizAttempt.cs" />
+    <Compile Include="MVVM\Model\User.cs" />
     <Compile Include="MVVM\Model\Word.cs" />
-    <Compile Include="MVVM\Model\WordStorage.cs" />
     <Compile Include="MVVM\ViewModel\DefinitionQuizViewModel.cs" />
     <Compile Include="MVVM\ViewModel\DownloadViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LearningViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\MessageViewModel.cs" />
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
@@ -148,14 +153,11 @@
       <DependentUpon>SearchTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\TextEmptyToVisibilityConverter.cs" />
-    <Compile Include="MVVM\View\CorrectCustomMessageBox.xaml.cs">
-      <DependentUpon>CorrectCustomMessageBox.xaml</DependentUpon>
+    <Compile Include="MVVM\View\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\DefinitionQuizView.xaml.cs">
       <DependentUpon>DefinitionQuizView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\View\IncorrectCustomMessageBox.xaml.cs">
-      <DependentUpon>IncorrectCustomMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\LearningView.xaml.cs">
       <DependentUpon>LearningView.xaml</DependentUpon>
@@ -163,6 +165,9 @@
     <Compile Include="MVVM\View\Converters\LevelToBrushConverter.cs" />
     <Compile Include="MVVM\View\DownloadWindow.xaml.cs">
       <DependentUpon>DownloadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>

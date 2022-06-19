@@ -73,12 +73,12 @@
                 <Rectangle DockPanel.Dock="Left" Width="40" Height="40">
                   <Rectangle.Style>
                     <Style TargetType="{x:Type Rectangle}">
-                      <Setter Property="Fill" Value="{Binding Path=GoodAnswers,
+                      <Setter Property="Fill" Value="{Binding Path=DefinitionMatches,
                         Converter={x:Static converters:LevelToBrushConverter.Instance}}"/>
                     </Style>
                   </Rectangle.Style>
                 </Rectangle>
-                <Label VerticalContentAlignment="Center" Content="{Binding Path=Word_}" Width="100" Height="40"/>
+                <Label VerticalContentAlignment="Center" Content="{Binding Path=Content}" Width="100" Height="40"/>
               </StackPanel>
             </controls:ClippedBorder>
           </DataTemplate>

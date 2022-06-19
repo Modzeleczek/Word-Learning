@@ -1,4 +1,6 @@
-﻿using Word_Learning.Core;
+﻿using System.ComponentModel;
+using Word_Learning.Core;
+using Word_Learning.MVVM.View;
 
 namespace Word_Learning.MVVM.ViewModel
 {
@@ -28,6 +30,21 @@ namespace Word_Learning.MVVM.ViewModel
                 definitionQuizVM.GenerateQuestion();
                 CurrentModeVM = definitionQuizVM;
             });
+            ShowLoginDialog();
+        }
+
+        private void ShowLoginDialog()
+        {
+            var loginViewModel = new LoginViewModel();
+            var loginWindow = new LoginWindow { DataContext = loginViewModel };
+            CancelEventHandler preventClose = (s, e) => { e.Cancel = true; };
+            loginWindow.Closing += preventClose;
+            loginViewModel.OnRequestClose += (s, e) =>
+            {
+                loginWindow.Closing -= preventClose;
+                loginWindow.Close();
+            };
+            loginWindow.ShowDialog();
         }
     }
 }

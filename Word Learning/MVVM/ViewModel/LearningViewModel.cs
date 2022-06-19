@@ -33,8 +33,8 @@ namespace Word_Learning.MVVM.ViewModel
                 searchText = value;
                 OnPropertyChanged(nameof(SearchText));
                 Words.Clear();
-                foreach (var w in WordStorage.Instance.DownloadedWords)
-                    if (w.Word_.Contains(searchText))
+                foreach (var w in User.Instance.Words)
+                    if (w.Content.Contains(searchText))
                         Words.Add(w);
                 SelectedIndex = -1;
             }
@@ -50,16 +50,16 @@ namespace Word_Learning.MVVM.ViewModel
                 OnPropertyChanged(nameof(WordCategory));
             }
         }
-        public RelayCommand SwitchCategoryCommand { get; }
+        public RelayCommand SwitchCategory { get; }
 
         public LearningViewModel()
         {
-            Words = new ObservableCollection<Word>(WordStorage.Instance.DownloadedWords);
+            Words = new ObservableCollection<Word>(User.Instance.Words);
             SearchText = "";
             var wordCategories = new string[] { "Downloaded", "User's" };
             int wordCategoryId = 0;
             WordCategory = wordCategories[wordCategoryId];
-            SwitchCategoryCommand = new RelayCommand(e =>
+            SwitchCategory = new RelayCommand(e =>
             {
                 wordCategoryId = (wordCategoryId + 1) % 2;
                 WordCategory = wordCategories[wordCategoryId];

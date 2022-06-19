@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
 using Word_Learning.MVVM.View;
@@ -11,11 +12,7 @@ namespace Word_Learning.MVVM.ViewModel
         public Word Word
         {
             get { return word; }
-            set
-            {
-                word = value;
-                OnPropertyChanged(nameof(Word));
-            }
+            set { word = value; OnPropertyChanged(nameof(Word)); }
         }
         public string[] Answer { get; } = new string[4];
         public RelayCommand[] AnswerClick { get; } = new RelayCommand[4];
@@ -24,12 +21,12 @@ namespace Word_Learning.MVVM.ViewModel
 
         public void GenerateQuestion()
         {
-            var wordsDB = WordStorage.Instance.DownloadedWords;
+            var wordsDB = User.Instance.Words;
             Word = wordsDB[0];
-            Answer[0] = wordsDB[2].Word_;
-            Answer[1] = wordsDB[1].Word_;
-            Answer[2] = wordsDB[3].Word_;
-            Answer[3] = wordsDB[0].Word_;
+            Answer[0] = wordsDB[2].Content;
+            Answer[1] = wordsDB[1].Content;
+            Answer[2] = wordsDB[3].Content;
+            Answer[3] = wordsDB[0].Content;
             int correctAnswer = 3;
             for (int i = 0; i < 4; ++i)
             {
@@ -38,17 +35,35 @@ namespace Word_Learning.MVVM.ViewModel
                 {
                     if (iCopy == correctAnswer)
                     {
-                        CorrectCustomMessageBox AnswerWindow = new CorrectCustomMessageBox();
-                        AnswerWindow.Owner = Application.Current.MainWindow;
-                        AnswerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                        AnswerWindow.ShowDialog();
+                        var vm = new MessageViewModel
+                        {
+                            MessageText = "Correct answer!",
+                            ButtonGradientStartColor = Color.FromArgb(255, 0xA5, 0xFF, 0x1F),
+                            ButtonGradientEndColor = Color.FromArgb(255, 0x74, 0xC2, 0x00)
+                        };
+                        var window = new MessageWindow
+                        {
+                            DataContext = vm,
+                            Owner = Application.Current.MainWindow,
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner
+                        };
+                        window.ShowDialog();
                     }
                     else
                     {
-                        IncorrectCustomMessageBox AnswerWindow = new IncorrectCustomMessageBox();
-                        AnswerWindow.Owner = Application.Current.MainWindow;
-                        AnswerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                        AnswerWindow.ShowDialog();
+                        var vm = new MessageViewModel
+                        {
+                            MessageText = "Incorrect answer.",
+                            ButtonGradientStartColor = Color.FromArgb(255, 0xFF, 0x70, 0x70),
+                            ButtonGradientEndColor = Color.FromArgb(255, 0xFF, 0x52, 0x52)
+                        };
+                        var window = new MessageWindow
+                        {
+                            DataContext = vm,
+                            Owner = Application.Current.MainWindow,
+                            WindowStartupLocation = WindowStartupLocation.CenterOwner
+                        };
+                        window.ShowDialog();
                     }
                 });
             }

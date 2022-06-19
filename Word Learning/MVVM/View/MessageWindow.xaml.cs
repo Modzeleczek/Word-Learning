@@ -1,23 +1,18 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Word_Learning
+namespace Word_Learning.MVVM.View
 {
-    public partial class MainWindow : Window
+    public partial class MessageWindow : Window
     {
-        public MainWindow()
+        public MessageWindow()
         {
             InitializeComponent();
-            
         }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void ButtonMinimalize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
