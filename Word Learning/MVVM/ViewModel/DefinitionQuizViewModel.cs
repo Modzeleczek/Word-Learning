@@ -34,37 +34,9 @@ namespace Word_Learning.MVVM.ViewModel
                 AnswerClick[i] = new RelayCommand(o =>
                 {
                     if (iCopy == correctAnswer)
-                    {
-                        var vm = new MessageViewModel
-                        {
-                            MessageText = "Correct answer!",
-                            ButtonGradientStartColor = Color.FromArgb(255, 0xA5, 0xFF, 0x1F),
-                            ButtonGradientEndColor = Color.FromArgb(255, 0x74, 0xC2, 0x00)
-                        };
-                        var window = new MessageWindow
-                        {
-                            DataContext = vm,
-                            Owner = Application.Current.MainWindow,
-                            WindowStartupLocation = WindowStartupLocation.CenterOwner
-                        };
-                        window.ShowDialog();
-                    }
+                        new MessageWindow(MessageViewModel.Good("Correct answer!")).ShowDialog();
                     else
-                    {
-                        var vm = new MessageViewModel
-                        {
-                            MessageText = "Incorrect answer.",
-                            ButtonGradientStartColor = Color.FromArgb(255, 0xFF, 0x70, 0x70),
-                            ButtonGradientEndColor = Color.FromArgb(255, 0xFF, 0x52, 0x52)
-                        };
-                        var window = new MessageWindow
-                        {
-                            DataContext = vm,
-                            Owner = Application.Current.MainWindow,
-                            WindowStartupLocation = WindowStartupLocation.CenterOwner
-                        };
-                        window.ShowDialog();
-                    }
+                        new MessageWindow(MessageViewModel.Bad("Incorrect answer.")).ShowDialog();
                 });
             }
         }

@@ -45,9 +45,5 @@ namespace Word_Learning.MVVM.View
             // M 0,0 l 150,0 10,10 -150,0 z
 
         }
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

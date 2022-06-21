@@ -13,7 +13,8 @@
         Background="Transparent"
         AllowsTransparency="True"
         Style="{StaticResource Window}"
-        MouseLeftButtonDown="Window_MouseDown">
+        MouseLeftButtonDown="Window_MouseDown"
+        Title="Word Learning">
   <Window.DataContext>
     <viewModel:MainViewModel/>
   </Window.DataContext>
@@ -66,12 +67,23 @@
           <RowDefinition Height="auto"/>
           <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0">
-          <Button DockPanel.Dock="Right" Click="ButtonClose_Click" Style="{StaticResource CloseButtonTheme}">
+        <DockPanel Grid.Row="0"
+          Margin="0,0,10,0">
+          <Button DockPanel.Dock="Right"
+            Click="ButtonClose_Click"
+            Style="{StaticResource CloseButtonTheme}">
             <Image Source="/Images/closeButton.png"/>
           </Button>
-          <Button DockPanel.Dock="Right" Click="ButtonMinimalize_Click" Style="{StaticResource CloseButtonTheme}">
+          <Button DockPanel.Dock="Right"
+            Click="ButtonMinimize_Click"
+            Style="{StaticResource CloseButtonTheme}">
             <Image Source="Images/minimizeButton.png"/>
+          </Button>
+          <Button DockPanel.Dock="Right"
+            Command="{Binding Path=Logout}"
+            Style="{StaticResource CloseButtonTheme}"
+                  BorderBrush="AliceBlue" BorderThickness="4">
+            <Image Source="Images/logout.png"/>
           </Button>
         </DockPanel>
         <ContentControl Grid.Row="1"

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Word_Learning.MVVM.View"
         xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="LoadingWindow" Height="200" Width="400"
+        Title="Downloading" Height="200" Width="400"
          WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -53,7 +53,7 @@
             </Grid>
             <Button
             Grid.Row="2"
-            Click="ButtonClose_Click"
+            Command="{Binding Close}"
                Foreground="#202020"
                Padding="5"
                Margin="40,5,40,5"

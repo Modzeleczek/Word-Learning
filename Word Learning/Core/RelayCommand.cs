@@ -25,7 +25,7 @@ namespace Word_Learning.Core
             return _canExecute == null || _canExecute(parameter);
         }
 
-        public void Execute(object paremeter)
+        public void Execute(object paremeter = null)
         {
             _execute(paremeter);
         }

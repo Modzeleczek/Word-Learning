@@ -15,7 +15,7 @@ namespace Word_Learning
             this.Close();
         }
 
-        private void ButtonMinimalize_Click(object sender, RoutedEventArgs e)
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }

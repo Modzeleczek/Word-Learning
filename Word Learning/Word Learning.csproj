@@ -131,8 +131,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Theme\StylishScrollbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Model\Downloader.cs" />
+    <Compile Include="MVVM\Model\Status.cs" />
+    <Compile Include="MVVM\Model\Storage.cs" />
     <Compile Include="MVVM\Model\JsonIgnoreAttribute.cs" />
     <Compile Include="MVVM\Model\QuizAttempt.cs" />
     <Compile Include="MVVM\Model\User.cs" />
@@ -213,6 +220,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\minimizeButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\crying.png" />
+    <Resource Include="Images\emoji.png" />
+    <Resource Include="Images\expressionless.png" />
+    <Resource Include="Images\grinning.png" />
+    <Resource Include="Images\happy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

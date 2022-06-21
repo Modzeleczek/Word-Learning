@@ -5,7 +5,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:Word_Learning.MVVM.View"
   mc:Ignorable="d"
-  Title="MessageWindow" Height="150" Width="300"
+  Title="MessageWindow" MaxHeight="200" MaxWidth="400"
   WindowStyle="None"
   ResizeMode="NoResize"
   AllowsTransparency="True"
@@ -27,7 +27,8 @@
       HorizontalAlignment="Center"
       VerticalAlignment="Center"
       FontWeight="Bold"
-      FontSize="{Binding Path=MessageFontSize}"/>
+      FontSize="{Binding Path=MessageFontSize}"
+      TextWrapping="Wrap"/>
       <Button
         Grid.Row="1"
         Click="ButtonClose_Click"

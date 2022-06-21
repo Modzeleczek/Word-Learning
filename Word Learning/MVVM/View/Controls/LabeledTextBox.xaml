@@ -23,6 +23,7 @@
         Foreground="#D6D6D6"
         BorderThickness="0"
         FontSize="14"
-        IsReadOnly="True"/>
+        IsReadOnly="True"
+        TextWrapping="Wrap"/>
   </StackPanel>
 </UserControl>

@@ -1,12 +1,20 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
+using Word_Learning.MVVM.View;
 
 namespace Word_Learning.MVVM.ViewModel
 {
     public class LearningViewModel : ObservableObject
     {
-        public ObservableCollection<Word> Words { get; }
+        public ObservableCollection<Word> words;
+        public ObservableCollection<Word> Words
+        {
+            get { return words; }
+            private set { words = value; OnPropertyChanged(nameof(Words)); }
+        }
+
         private int selectedIndex;
         public int SelectedIndex
         {
@@ -52,6 +60,8 @@ namespace Word_Learning.MVVM.ViewModel
         }
         public RelayCommand SwitchCategory { get; }
 
+        public RelayCommand DownloadWords { get; }
+
         public LearningViewModel()
         {
             Words = new ObservableCollection<Word>(User.Instance.Words);
@@ -63,6 +73,23 @@ namespace Word_Learning.MVVM.ViewModel
             {
                 wordCategoryId = (wordCategoryId + 1) % 2;
                 WordCategory = wordCategories[wordCategoryId];
+            });
+            DownloadWords = new RelayCommand(_e =>
+            {
+                var downloadViewModel = new DownloadViewModel();
+                var downloadWindow = new DownloadWindow { DataContext = downloadViewModel };
+                CancelEventHandler handler = (s, e) => e.Cancel = true;
+                downloadWindow.Closing += handler;
+                downloadViewModel.OnRequestClose += (s, e) =>
+                {
+                    downloadWindow.Closing -= handler;
+                    downloadWindow.Close();
+                    var status = downloadViewModel.Status;
+                    if (status.Code != 0) MessageWindow.BadDialog(status.Message);
+                    else if (status.Message != "") MessageWindow.GoodDialog(status.Message);
+                };
+                downloadWindow.ShowDialog();
+                Words = new ObservableCollection<Word>(User.Instance.Words);
             });
         }
     }

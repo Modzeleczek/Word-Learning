@@ -11,15 +11,13 @@
   ResizeMode="NoResize"
   Background="Transparent"
   AllowsTransparency="True"
-  Style="{StaticResource Window}">
+  Style="{StaticResource Window}"
+  MouseLeftButtonDown="Window_MouseDown">
   <Border Background="#333533"
     CornerRadius="20"
     BorderThickness="3px"
     BorderBrush="#202020">
     <StackPanel Margin="5,40,0,5">
-      <TextBlock Text="{Binding Path=Message, Mode=OneWay}"
-        Foreground="{Binding Path=MessageBrush}"
-        HorizontalAlignment="Center"/>
       <Label Content="Username"
         Foreground="#D6D6D6"/>
       <TextBox Text="{Binding Path=Username, Mode=OneWayToSource}"
@@ -55,7 +53,7 @@
           </Style>
         </Button.Resources>
         <Button.Background>
-          <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#ebc102" Offset="0"/>
             <GradientStop Color="#c4a204" Offset="1"/>
           </LinearGradientBrush>
@@ -79,7 +77,7 @@
           </Style>
         </Button.Resources>
         <Button.Background>
-          <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+          <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#ebc102" Offset="0"/>
             <GradientStop Color="#c4a204" Offset="1"/>
           </LinearGradientBrush>
