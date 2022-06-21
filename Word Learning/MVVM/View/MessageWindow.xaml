@@ -11,7 +11,8 @@
   AllowsTransparency="True"
   Style="{StaticResource Window}"
   Background="Transparent"
-  MouseLeftButtonDown="Window_MouseDown">
+  MouseLeftButtonDown="Window_MouseDown"
+  Icon="/Images/dictionary.png">
   <Border Background="#333533"
     CornerRadius="20"
     BorderThickness="3px"

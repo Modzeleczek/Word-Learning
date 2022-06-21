@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Learning"
         xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
-        Icon="Images/dictionary.png"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        Icon="/Images/dictionary.png"
         mc:Ignorable="d"
         Height="600" Width="1000"
         WindowStyle="None"
@@ -14,10 +15,17 @@
         AllowsTransparency="True"
         Style="{StaticResource Window}"
         MouseLeftButtonDown="Window_MouseDown"
-        Title="Word Learning">
+        Title="Word Learning"
+        Name="WindowName">
   <Window.DataContext>
     <viewModel:MainViewModel/>
   </Window.DataContext>
+  <intr:Interaction.Triggers>
+    <intr:EventTrigger EventName="Loaded">
+      <intr:InvokeCommandAction Command="{Binding Path=WindowLoaded}"
+        CommandParameter="{Binding ElementName=WindowName}"/>
+    </intr:EventTrigger>
+  </intr:Interaction.Triggers>
 
   <Border Background="#333533"
             CornerRadius="20"

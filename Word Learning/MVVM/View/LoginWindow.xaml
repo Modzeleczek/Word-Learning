@@ -4,7 +4,8 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:Word_Learning.MVVM.View"
-  xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
+  xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+  Icon="/Images/dictionary.png"
   mc:Ignorable="d"
   Height="250" Width="400"
   WindowStyle="None"
@@ -14,8 +15,15 @@
   AllowsTransparency="True"
   Style="{StaticResource Window}"
   MouseLeftButtonDown="Window_MouseDown"
-  Title="Login">
-    <Border Background="#333533"
+  Title="Login"
+  Name="WindowName">
+  <intr:Interaction.Triggers>
+    <intr:EventTrigger EventName="Loaded">
+      <intr:InvokeCommandAction Command="{Binding Path=WindowLoaded}"
+        CommandParameter="{Binding ElementName=WindowName}"/>
+    </intr:EventTrigger>
+  </intr:Interaction.Triggers>
+  <Border Background="#333533"
     CornerRadius="20"
     BorderThickness="3px"
     BorderBrush="#202020">

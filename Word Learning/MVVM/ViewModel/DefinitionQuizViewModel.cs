@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Media;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
 using Word_Learning.MVVM.View;
@@ -8,6 +7,8 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class DefinitionQuizViewModel : ObservableObject
     {
+        private Window window;
+
         private Word word = null;
         public Word Word
         {
@@ -17,7 +18,7 @@ namespace Word_Learning.MVVM.ViewModel
         public string[] Answer { get; } = new string[4];
         public RelayCommand[] AnswerClick { get; } = new RelayCommand[4];
 
-        public DefinitionQuizViewModel() { }
+        public DefinitionQuizViewModel(Window window) { this.window = window; }
 
         public void GenerateQuestion()
         {
@@ -34,9 +35,9 @@ namespace Word_Learning.MVVM.ViewModel
                 AnswerClick[i] = new RelayCommand(o =>
                 {
                     if (iCopy == correctAnswer)
-                        new MessageWindow(MessageViewModel.Good("Correct answer!")).ShowDialog();
+                        new MessageWindow(window, MessageViewModel.Good("Correct answer!")).ShowDialog();
                     else
-                        new MessageWindow(MessageViewModel.Bad("Incorrect answer.")).ShowDialog();
+                        new MessageWindow(window, MessageViewModel.Bad("Incorrect answer.")).ShowDialog();
                 });
             }
         }

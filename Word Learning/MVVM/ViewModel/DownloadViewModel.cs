@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
-using System.Windows;
 using Word_Learning.Core;
 using Word_Learning.MVVM.View;
 using static Word_Learning.MVVM.Model.Downloader;
@@ -12,56 +10,51 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class DownloadViewModel : ObservableObject
     {
+        private BackgroundWorker worker;
         private double progress;
-        public double Progress {
+        public double Progress
+        {
             get { return progress; }
             set { progress = value; OnPropertyChanged(nameof(Progress)); }
         }
-
+        public Model.Status Status { get; private set; }
         public RelayCommand Close { get; }
         public event EventHandler OnRequestClose;
-        public Model.Status Status { get; private set; }
-
-        private BackgroundWorker worker = new BackgroundWorker();
 
         public DownloadViewModel()
         {
-            Close = new RelayCommand(e =>
+            Close = new RelayCommand(e => worker.CancelAsync());
+            worker = new BackgroundWorker
             {
-                worker.CancelAsync();
-                // resetEvent.WaitOne();
-                // OnRequestClose(thisCopy, new EventArgs());
-            });
-            worker.WorkerSupportsCancellation = true;
-            worker.WorkerReportsProgress = true;
+                WorkerReportsProgress = true,
+                WorkerSupportsCancellation = true
+            };
             worker.DoWork += Worker_DoWork;
             worker.ProgressChanged += Worker_ProgressChanged;
             worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-            worker.RunWorkerAsync(100);
+            worker.RunWorkerAsync();
+        }
+
+        private class BackgroundWorkerError : Exception
+        {
+            public BackgroundWorkerError(string message) : base(message) { }
         }
 
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            /*var worker = (BackgroundWorker)sender;
+            var worker = (BackgroundWorker)sender;
             LinkedList<string> words = GetRandomWords(20);
             if (words == null)
             { // błąd podczas pobierania losowych słów
-                if (!worker.CancellationPending) throw new Exception("Random words could not be downloaded.");
-                else
-                {
-                    e.Cancel = true;
-                    return;
-                }
+                if (!worker.CancellationPending)
+                    throw new BackgroundWorkerError("Random words could not be downloaded.");
+                else { e.Cancel = true; return; }
             }
             LinkedList<Word> detailedWords = new LinkedList<Word>();
             int progress = 0;
             foreach (string word in words)
             {
-                if (worker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    return;
-                }
+                if (worker.CancellationPending) { e.Cancel = true; return; }
                 try
                 {
                     Word detailedWord = GetFirstHomonym(word);
@@ -74,20 +67,13 @@ namespace Word_Learning.MVVM.ViewModel
             // if (detailedWords.Count < DOWNLOADED_WORDS / 4)
             if (detailedWords.Count == 0)
             {
-                if (!worker.CancellationPending) throw new Exception("Word details could not be downloaded.");
-                else
-                {
-                    e.Cancel = true;
-                    return;
-                }
+                if (!worker.CancellationPending)
+                    throw new BackgroundWorkerError("Word details could not be downloaded.");
+                else { e.Cancel = true; return; }
             }
-            if (worker.CancellationPending)
-            {
-                e.Cancel = true;
-                return;
-            }
+            if (worker.CancellationPending) { e.Cancel = true; return; }
             AddToUser(detailedWords);
-            e.Result = new Model.Status(0, "New words downloaded.");*/
+            e.Result = new Model.Status(0, "New words downloaded.");
             /*var rng = new Random();
             var worker = (BackgroundWorker)sender;
             for (int i = 0; i < 100; ++i)
@@ -98,13 +84,9 @@ namespace Word_Learning.MVVM.ViewModel
                 worker.ReportProgress(i);
                 Thread.Sleep(250);
             }*/
-            var bgw = sender as BackgroundWorker;
-            e.Result = DoSlowProcess((int)e.Argument, bgw, e);
-        }
-
-        private int DoSlowProcess(int iterations, BackgroundWorker worker, DoWorkEventArgs e)
-        {
-            int result = 0;
+            /* int result = 0;
+            const int iterations = 100;
+            var rng = new Random();
             for (int i = 0; i <= iterations; i++)
             {
                 if (worker != null)
@@ -114,6 +96,7 @@ namespace Word_Learning.MVVM.ViewModel
                         e.Cancel = true;
                         break;
                     }
+                    if (rng.Next(0, 200) == 56) throw new BackgroundWorkerError("RNG gave 56.");
                     if (worker.WorkerReportsProgress)
                     {
                         int percentComplete =
@@ -124,7 +107,7 @@ namespace Word_Learning.MVVM.ViewModel
                 Thread.Sleep(100);
                 result = i;
             }
-            return result;
+            e.Result = result; */
         }
 
         // wywoływane co wywołanie ReportProgress
@@ -144,15 +127,10 @@ namespace Word_Learning.MVVM.ViewModel
             // Status = (Model.Status)e.Result;
             OnRequestClose(this, new EventArgs());
             // resetEvent.Set();*/
-            if (e.Error != null)
-                MessageBox.Show(e.Error.Message);
-            else if (e.Cancelled)
-                MessageBox.Show("Cancelled");
-            else
-            {
-                MessageBox.Show(e.Result.ToString());
-                Progress = 0;
-            }
+            if (e.Error != null) Status = new Model.Status(1, e.Error.Message); // wystąpił błąd
+            else if (e.Cancelled) Status = new Model.Status(0, ""); // użytkownik anulował
+            else Status = (Model.Status)e.Result; // zakończono powodzeniem
+            OnRequestClose(this, new EventArgs());
         }
 
         private void AddToUser(LinkedList<Word> detailedWords)

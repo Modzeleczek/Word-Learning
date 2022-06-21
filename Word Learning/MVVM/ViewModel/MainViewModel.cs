@@ -8,10 +8,11 @@ namespace Word_Learning.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
-        public RelayCommand Logout { get; }
-        public RelayCommand SwitchToLearning { get; }
-        public RelayCommand SwitchToStatistics { get; }
-        public RelayCommand SwitchToDefinitionQuiz { get; }
+        public RelayCommand WindowLoaded { get; }
+        public RelayCommand Logout { get; private set; }
+        public RelayCommand SwitchToLearning { get; private set; }
+        public RelayCommand SwitchToStatistics { get; private set; }
+        public RelayCommand SwitchToDefinitionQuiz { get; private set; }
         private object currentView;
         public object CurrentModeVM
         {
@@ -21,41 +22,46 @@ namespace Word_Learning.MVVM.ViewModel
 
         public MainViewModel()
         {
-            var learningVM = new LearningViewModel();
-            var learningView = new LearningView { DataContext = learningVM };
-            var statisticsVM = new StatisticsViewModel();
-            var definitionQuizVM = new DefinitionQuizViewModel();
-            SwitchToLearning = new RelayCommand(o =>
+            WindowLoaded = new RelayCommand(windowLoadedE =>
             {
-                if (CurrentModeVM == learningVM) return;
-                if (User.Instance.Words.Count <= 4)
-                    new MessageWindow(new MessageViewModel
-                    {
-                        MessageText = "You don't have any words. Download some by clicking the button near search box.",
-                        MessageFontSize = 16
-                    }).ShowDialog();
-                CurrentModeVM = learningVM;
+                var window = (Window)windowLoadedE;
+                var learningVM = new LearningViewModel(window);
+                var learningView = new LearningView { DataContext = learningVM };
+                var statisticsVM = new StatisticsViewModel(window);
+                var definitionQuizVM = new DefinitionQuizViewModel(window);
+                SwitchToLearning = new RelayCommand(e =>
+                {
+                    if (CurrentModeVM == learningVM) return;
+                    if (User.Instance.Words.Count == 0)
+                        new MessageWindow(window, new MessageViewModel
+                        {
+                            MessageText = "You don't have any words. Download some by clicking the button near search box.",
+                            MessageFontSize = 16
+                        }).ShowDialog();
+                    CurrentModeVM = learningVM;
+                });
+                SwitchToStatistics = new RelayCommand(e =>
+                { if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM; });
+                SwitchToDefinitionQuiz = new RelayCommand(e =>
+                {
+                    if (CurrentModeVM == definitionQuizVM) return;
+                    definitionQuizVM.GenerateQuestion();
+                    CurrentModeVM = definitionQuizVM;
+                });
+                Logout = new RelayCommand(e =>
+                {
+                    User.Instance.Clear();
+                    ShowLoginDialog(window);
+                });
+                ShowLoginDialog(window);
+                SwitchToLearning.Execute();
             });
-            SwitchToStatistics = new RelayCommand(o => { if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM; });
-            SwitchToDefinitionQuiz = new RelayCommand(o =>
-            {
-                if (CurrentModeVM == definitionQuizVM) return;
-                definitionQuizVM.GenerateQuestion();
-                CurrentModeVM = definitionQuizVM;
-            });
-            Logout = new RelayCommand(e =>
-            {
-                User.Instance.Clear();
-                ShowLoginDialog();
-            });
-            ShowLoginDialog();
-            SwitchToLearning.Execute();
         }
 
-        private void ShowLoginDialog()
+        private void ShowLoginDialog(Window mainWindow)
         {
             var loginViewModel = new LoginViewModel();
-            var loginWindow = new LoginWindow { DataContext = loginViewModel };
+            var loginWindow = new LoginWindow { DataContext = loginViewModel, Owner = mainWindow };
             CancelEventHandler handler = (s, e) =>
             {
                 User.Instance.SaveToFile();
