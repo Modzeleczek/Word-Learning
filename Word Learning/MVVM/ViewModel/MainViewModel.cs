@@ -8,6 +8,7 @@ namespace Word_Learning.MVVM.ViewModel
 {
     class MainViewModel : ObservableObject
     {
+        public RelayCommand WindowLoaded { get; }
         public RelayCommand Logout { get; }
         public RelayCommand SwitchToLearning { get; }
         public RelayCommand SwitchToStatistics { get; }
@@ -25,10 +26,10 @@ namespace Word_Learning.MVVM.ViewModel
             var learningView = new LearningView { DataContext = learningVM };
             var statisticsVM = new StatisticsViewModel();
             var definitionQuizVM = new DefinitionQuizViewModel();
-            SwitchToLearning = new RelayCommand(o =>
+            SwitchToLearning = new RelayCommand(e =>
             {
                 if (CurrentModeVM == learningVM) return;
-                if (User.Instance.Words.Count <= 4)
+                if (User.Instance.Words.Count == 0)
                     new MessageWindow(new MessageViewModel
                     {
                         MessageText = "You don't have any words. Download some by clicking the button near search box.",
@@ -36,8 +37,9 @@ namespace Word_Learning.MVVM.ViewModel
                     }).ShowDialog();
                 CurrentModeVM = learningVM;
             });
-            SwitchToStatistics = new RelayCommand(o => { if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM; });
-            SwitchToDefinitionQuiz = new RelayCommand(o =>
+            SwitchToStatistics = new RelayCommand(e =>
+            { if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM; });
+            SwitchToDefinitionQuiz = new RelayCommand(e =>
             {
                 if (CurrentModeVM == definitionQuizVM) return;
                 definitionQuizVM.GenerateQuestion();
@@ -48,8 +50,11 @@ namespace Word_Learning.MVVM.ViewModel
                 User.Instance.Clear();
                 ShowLoginDialog();
             });
-            ShowLoginDialog();
-            SwitchToLearning.Execute();
+            WindowLoaded = new RelayCommand(e =>
+            {
+                ShowLoginDialog();
+                SwitchToLearning.Execute();
+            });
         }
 
         private void ShowLoginDialog()

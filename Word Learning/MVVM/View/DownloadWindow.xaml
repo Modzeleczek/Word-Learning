@@ -5,17 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Word_Learning.MVVM.View"
         xmlns:viewModel="clr-namespace:Word_Learning.MVVM.ViewModel"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Downloading" Height="200" Width="400"
          WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        Style="{StaticResource Window}">
-      <Window.DataContext>
-        <viewModel:DownloadViewModel/>
-      </Window.DataContext>
-    <Window.Resources>
+        Style="{StaticResource Window}"
+        Icon="/Images/dictionary.png">
+  <Window.Resources>
 
         <ControlTemplate x:Key="ProgressBarPath" TargetType="ProgressBar">
             <Viewbox Stretch="Fill">
