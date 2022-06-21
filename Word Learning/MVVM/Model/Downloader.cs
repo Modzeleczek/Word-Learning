@@ -38,30 +38,20 @@ namespace Word_Learning.MVVM.Model
             return await response.Content.ReadAsStringAsync();
         }
 
-        private static async Task<string> GetWordDetails(string word)
+        private static readonly string DETAILS_API = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+        private static readonly string RANDOM_API = "https://random-word-api.herokuapp.com/word";
+        private static string Get(string url)
         {
-            return await SendRequest("https://api.dictionaryapi.dev/api/v2/entries/en/" + word, HttpMethod.Get);
+            var task = SendRequest(url, HttpMethod.Get);
+            task.Wait();
+            return task.Result;
         }
 
-        private static int Index = 0;
         public static LinkedList<string> GetRandomWords(int count)
         {
-            string[] hardCodedWords = {
-                "bear", "arouse", "celery", "roof", "crown", "week", "crib", "tax", "money", "twig", "doctor",
-                "stem", "string", "baseball", "kneel", "fax", "sip", "stroke", "bathe", "walk", "jam", "march",
-                "hug", "strip", "cycle", "welcome", "goofy", "husky", "elderly", "eminent", "willing", "regular",
-                "loutish", "merciful", "abounding", "light", "waggish", "gaping", "devotedly", "very", "safely",
-                "ahead", "eventually", "punctually", "blissfully", "frankly", "hopefully", "somewhat", 
-                "personally", "else" };
-            if (count > hardCodedWords.Length)
-                return null;
-            LinkedList<string> ret = new LinkedList<string>();
-            for (int i = 0; i < count; ++i)
-            {
-                ret.AddLast(hardCodedWords[Index]);
-                Index = (Index + 1) % hardCodedWords.Length;
-            }
-            return ret;
+            var jsonWords = Get(RANDOM_API + $"?number={count}");
+            var words = JsonConvert.DeserializeObject<LinkedList<string>>(jsonWords);
+            return words;
         }
 
         public class Word
@@ -85,9 +75,7 @@ namespace Word_Learning.MVVM.Model
 
         public static Word GetFirstHomonym(string word)
         {
-            var task = GetWordDetails(word);
-            task.Wait();
-            var jsonString = task.Result;
+            var jsonString = Get(DETAILS_API + word);
             List<Word> homonyms = JsonConvert.DeserializeObject<List<Word>>(jsonString);
             // dla jednego stringa, np. "bear", API może zwrócić kilka słów (homonimów); jeżeli nie udało się pobrać słowa, to execute wyrzuca IOException
             return IsWordEligible(homonyms) ? homonyms[0] : null;

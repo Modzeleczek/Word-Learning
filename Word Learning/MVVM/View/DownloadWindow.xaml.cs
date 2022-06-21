@@ -10,6 +10,7 @@ namespace Word_Learning.MVVM.View
         public DownloadWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
             // Instantiate and initialize variable for normal Path Data without transformation:        
             Geometry geo = Geometry.Parse("M 0,0 l 150,0 0,10 -150,0 z");
 
@@ -43,7 +44,6 @@ namespace Word_Learning.MVVM.View
             // Note that returned values are absolute values.
             // Identical Path Data in relative coordinates (meaning offset values to respective previous point):
             // M 0,0 l 150,0 10,10 -150,0 z
-
         }
     }
 }

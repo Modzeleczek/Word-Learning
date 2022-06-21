@@ -8,6 +8,7 @@ namespace Word_Learning.MVVM.View
         public LoginWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

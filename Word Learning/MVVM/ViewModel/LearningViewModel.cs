@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
 using Word_Learning.MVVM.View;
@@ -62,7 +63,7 @@ namespace Word_Learning.MVVM.ViewModel
 
         public RelayCommand DownloadWords { get; }
 
-        public LearningViewModel()
+        public LearningViewModel(Window window)
         {
             Words = new ObservableCollection<Word>(User.Instance.Words);
             SearchText = "";
@@ -77,7 +78,7 @@ namespace Word_Learning.MVVM.ViewModel
             DownloadWords = new RelayCommand(_e =>
             {
                 var downloadViewModel = new DownloadViewModel();
-                var downloadWindow = new DownloadWindow { DataContext = downloadViewModel };
+                var downloadWindow = new DownloadWindow { DataContext = downloadViewModel, Owner = window };
                 CancelEventHandler handler = (s, e) => e.Cancel = true;
                 downloadWindow.Closing += handler;
                 downloadViewModel.OnRequestClose += (s, e) =>
@@ -85,8 +86,8 @@ namespace Word_Learning.MVVM.ViewModel
                     downloadWindow.Closing -= handler;
                     downloadWindow.Close();
                     var status = downloadViewModel.Status;
-                    if (status.Code != 0) MessageWindow.BadDialog(status.Message);
-                    else if (status.Message != "") MessageWindow.GoodDialog(status.Message);
+                    if (status.Code != 0) MessageWindow.BadDialog(window, status.Message);
+                    else if (status.Message != "") MessageWindow.GoodDialog(window, status.Message);
                 };
                 downloadWindow.ShowDialog();
                 Words = new ObservableCollection<Word>(User.Instance.Words);

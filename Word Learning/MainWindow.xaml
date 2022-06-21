@@ -15,13 +15,15 @@
         AllowsTransparency="True"
         Style="{StaticResource Window}"
         MouseLeftButtonDown="Window_MouseDown"
-        Title="Word Learning">
+        Title="Word Learning"
+        Name="WindowName">
   <Window.DataContext>
     <viewModel:MainViewModel/>
   </Window.DataContext>
   <intr:Interaction.Triggers>
     <intr:EventTrigger EventName="Loaded">
-      <intr:InvokeCommandAction Command="{Binding WindowLoaded}"/>
+      <intr:InvokeCommandAction Command="{Binding Path=WindowLoaded}"
+        CommandParameter="{Binding ElementName=WindowName}"/>
     </intr:EventTrigger>
   </intr:Interaction.Triggers>
 

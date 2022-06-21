@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
 using Word_Learning.MVVM.View;
@@ -7,8 +8,11 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class LoginViewModel : ObservableObject
     {
-        private void Error(string message) => new MessageWindow(MessageViewModel.Bad(message)).ShowDialog();
-        private void Success(string message) => new MessageWindow(MessageViewModel.Good(message)).ShowDialog();
+        public Window window;
+        private void Error(string message)
+            => new MessageWindow(window, MessageViewModel.Bad(message)).ShowDialog();
+        private void Success(string message)
+            => new MessageWindow(window, MessageViewModel.Good(message)).ShowDialog();
 
         private string username;
         public string Username
@@ -31,6 +35,7 @@ namespace Word_Learning.MVVM.ViewModel
 
         public LoginViewModel()
         {
+            
             Register = new RelayCommand(e =>
             {
                 if (string.IsNullOrWhiteSpace(Username))
