@@ -7,9 +7,10 @@
   xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
   Icon="/Images/dictionary.png"
   mc:Ignorable="d"
-  Height="300" Width="400"
+  Height="250" Width="400"
   WindowStyle="None"
   ResizeMode="NoResize"
+  Icon="/Images/dictionary.png"
   Background="Transparent"
   AllowsTransparency="True"
   Style="{StaticResource Window}"
@@ -26,72 +27,72 @@
     CornerRadius="20"
     BorderThickness="3px"
     BorderBrush="#202020">
-    <StackPanel Margin="5,40,0,5">
-      <Label Content="Username"
+        <StackPanel Margin="5,10,0,5">
+            <Label Content="Username"
         Foreground="#D6D6D6"/>
-      <TextBox Text="{Binding Path=Username, Mode=OneWayToSource}"
+            <TextBox Text="{Binding Path=Username, Mode=OneWayToSource}"
         Margin="10,0,10,10"
         Background="#202020"
         Foreground="#D6D6D6"
         BorderThickness="0"
         FontSize="14"/>
-      <Label Content="Password"
+            <Label Content="Password"
         Foreground="#D6D6D6"/>
-      <TextBox Text="{Binding Path=Password, Mode=TwoWay}"
+            <TextBox Text="{Binding Path=Password, Mode=TwoWay}"
         Margin="10,0,10,10"
         Background="#202020"
         BorderBrush="#202020"
         Foreground="#D6D6D6"
         BorderThickness="0"
         FontSize="14"/>
-      <Button Content="Login"
+            <Button Content="Login"
         Foreground="#202020"
         Padding="5"
         Margin="40,5,40,5"
         BorderBrush="#202020"
         BorderThickness="3"
         Command="{Binding Path=Login}">
-        <Button.Resources>
-          <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="20"/>
-            <Style.Triggers>
-              <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#333533"/>
-              </Trigger>
-            </Style.Triggers>
-          </Style>
-        </Button.Resources>
-        <Button.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#ebc102" Offset="0"/>
-            <GradientStop Color="#c4a204" Offset="1"/>
-          </LinearGradientBrush>
-        </Button.Background>
-      </Button>
-      <Button Content="Register"
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#333533"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#ebc102" Offset="0"/>
+                        <GradientStop Color="#c4a204" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="Register"
         Foreground="#202020"
         Padding="5"
         Margin="40,5,40,5"
         BorderBrush="#202020"
         BorderThickness="3"
         Command="{Binding Path=Register}">
-        <Button.Resources>
-          <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="20"/>
-            <Style.Triggers>
-              <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#333533"/>
-              </Trigger>
-            </Style.Triggers>
-          </Style>
-        </Button.Resources>
-        <Button.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#ebc102" Offset="0"/>
-            <GradientStop Color="#c4a204" Offset="1"/>
-          </LinearGradientBrush>
-        </Button.Background>
-      </Button>
-    </StackPanel>
-  </Border>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#333533"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Resources>
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#ebc102" Offset="0"/>
+                        <GradientStop Color="#c4a204" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+    </Border>
 </Window>
