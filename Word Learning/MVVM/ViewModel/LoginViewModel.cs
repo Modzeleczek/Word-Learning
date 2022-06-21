@@ -8,7 +8,7 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class LoginViewModel : ObservableObject
     {
-        public Window window;
+        private Window window;
         private void Error(string message)
             => new MessageWindow(window, MessageViewModel.Bad(message)).ShowDialog();
         private void Success(string message)
@@ -28,14 +28,15 @@ namespace Word_Learning.MVVM.ViewModel
             set { password = value; OnPropertyChanged(nameof(Password)); }
         }
 
-        public RelayCommand Login { get; }
-        public RelayCommand Register { get; }
+        public RelayCommand WindowLoaded { get; }
+        public RelayCommand Login { get; private set; }
+        public RelayCommand Register { get; private set; }
 
         public event EventHandler OnRequestClose;
 
         public LoginViewModel()
         {
-            
+            WindowLoaded = new RelayCommand(e => window = (Window)e);
             Register = new RelayCommand(e =>
             {
                 if (string.IsNullOrWhiteSpace(Username))

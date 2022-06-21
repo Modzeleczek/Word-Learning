@@ -62,7 +62,8 @@
           <RadioButton Content="Synonym quiz"
                                  Height="50"
                                  FontSize="16"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding Path=SwitchToSynonymQuiz}"/>
           <RadioButton Content="Statistics"
                                  Height="50"
                                  FontSize="16"
