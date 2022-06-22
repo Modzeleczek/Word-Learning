@@ -16,7 +16,8 @@
         Style="{StaticResource Window}"
         MouseLeftButtonDown="Window_MouseDown"
         Title="Word Learning"
-        Name="WindowName">
+        Name="WindowName"
+        Closing="WindowName_Closing">
   <Window.DataContext>
     <viewModel:MainViewModel/>
   </Window.DataContext>
@@ -79,19 +80,20 @@
         <DockPanel Grid.Row="0"
           Margin="0,0,10,0">
           <Button DockPanel.Dock="Right"
+            Style="{StaticResource CloseButtonTheme}"
             Click="ButtonClose_Click"
-            Style="{StaticResource CloseButtonTheme}">
+            Command="{Binding Close}">
             <Image Source="/Images/closeButton.png"/>
           </Button>
           <Button DockPanel.Dock="Right"
             Click="ButtonMinimize_Click"
             Style="{StaticResource CloseButtonTheme}">
-            <Image Source="Images/minimizeButton.png"/>
+            <Image Source="/Images/minimizeButton.png"/>
           </Button>
           <Button DockPanel.Dock="Right"
             Command="{Binding Path=Logout}"
             Style="{StaticResource CloseButtonTheme}">
-            <Image Source="Images/logout.png"/>
+            <Image Source="/Images/logout.png"/>
           </Button>
         </DockPanel>
         <ContentControl Grid.Row="1"

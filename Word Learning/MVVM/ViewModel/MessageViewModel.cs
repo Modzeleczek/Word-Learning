@@ -64,5 +64,14 @@ namespace Word_Learning.MVVM.ViewModel
             vm.ButtonGradientEndColor = Color.FromArgb(255, 0xFF, 0x52, 0x52);
             return vm;
         }
+
+        public static MessageViewModel Neutral(string message = "")
+        {
+            var vm = new MessageViewModel();
+            vm.MessageText = message;
+            vm.ButtonGradientStartColor = Color.FromArgb(255, 0xEB, 0xC1, 0x02);
+            vm.ButtonGradientEndColor = Color.FromArgb(255, 0xC4, 0xA2, 0x04);
+            return vm;
+        }
     }
 }

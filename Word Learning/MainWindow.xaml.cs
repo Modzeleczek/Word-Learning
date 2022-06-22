@@ -8,10 +8,16 @@ namespace Word_Learning
         public MainWindow()
         {
             InitializeComponent();
-            
         }
+
+        private void WindowName_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
+            Closing -= WindowName_Closing;
             this.Close();
         }
 

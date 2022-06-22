@@ -45,33 +45,40 @@ namespace Word_Learning.MVVM.ViewModel
             get { return logout; }
             private set { logout = value; OnPropertyChanged(nameof(Logout)); }
         }
+        private RelayCommand close;
+        public RelayCommand Close
+        {
+            get { return close; }
+            private set { close = value; OnPropertyChanged(nameof(Close)); }
+        }
+
+        private LearningViewModel learningVM;
+        private DefinitionQuizViewModel definitionQuizVM;
+        private SynonymQuizViewModel synonymQuizVM;
+        private StatisticsViewModel statisticsVM;
 
         public MainViewModel()
         {
             WindowLoaded = new RelayCommand(windowLoadedE =>
             {
                 var window = (Window)windowLoadedE;
-                var learningVM = new LearningViewModel(window);
-                var learningView = new LearningView { DataContext = learningVM };
-                var definitionQuizVM = new DefinitionQuizViewModel(window);
-                var synonymQuizVM = new SynonymQuizViewModel(window);
-                var statisticsVM = new StatisticsViewModel(window);
+                CreateViewModels((Window)windowLoadedE);
                 SwitchToLearning = new RelayCommand(e =>
                 {
                     if (CurrentModeVM == learningVM) return;
                     CurrentModeVM = learningVM;
                     if (User.Instance.Words.Count == 0)
-                        new MessageWindow(window, new MessageViewModel
-                        {
-                            MessageText = "You don't have any words. Download some by clicking the button near search box.",
-                            MessageFontSize = 16
-                        }).ShowDialog();
+                        MessageWindow.NeutralDialog(window, "You don't have any words. " +
+                            "Download some by clicking the button near search box.");
                 });
                 SwitchToDefinitionQuiz = new RelayCommand(e =>
                 {
                     if (CurrentModeVM == definitionQuizVM) return;
-                    definitionQuizVM.GenerateQuestion();
-                    CurrentModeVM = definitionQuizVM;
+                    var status = definitionQuizVM.GenerateQuiz();
+                    if (status.Code != 0)
+                        new MessageWindow(window, MessageViewModel.Bad(status.Message)).ShowDialog();
+                    else
+                        CurrentModeVM = definitionQuizVM;
                 });
                 switchToSynonymQuiz = new RelayCommand(e =>
                 {
@@ -85,12 +92,26 @@ namespace Word_Learning.MVVM.ViewModel
                 });
                 Logout = new RelayCommand(e =>
                 {
+                    User.Instance.SaveToFile();
                     User.Instance.Clear();
+                    CurrentModeVM = null;
                     ShowLoginDialog(window);
+                });
+                Close = new RelayCommand(e =>
+                {
+                    User.Instance.SaveToFile();
                 });
                 Logout.Execute();
                 SwitchToLearning.Execute();
             });
+        }
+
+        private void CreateViewModels(Window window)
+        {
+            learningVM = new LearningViewModel(window);
+            definitionQuizVM = new DefinitionQuizViewModel(window);
+            synonymQuizVM = new SynonymQuizViewModel(window);
+            statisticsVM = new StatisticsViewModel(window);
         }
 
         private void ShowLoginDialog(Window owner)
@@ -109,6 +130,8 @@ namespace Word_Learning.MVVM.ViewModel
                 loginWindow.Close();
             };
             loginWindow.ShowDialog();
+            CreateViewModels(owner);
+            SwitchToLearning.Execute();
         }
     }
 }

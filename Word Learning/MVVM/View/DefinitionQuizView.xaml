@@ -59,8 +59,7 @@
         <Label Grid.Row="0" Content="Pick the described word"
     Style="{StaticResource DefinitionLabel}"/>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
-      Text="{Binding Path=Word.Definition,
-        Mode=OneWay}"
+      Text="{Binding Path=StringQuestion, Mode=OneWay}"
       Style="{StaticResource DefinitionValue}"
         TextWrapping="Wrap"/>
         <Button
@@ -70,7 +69,7 @@
                Padding="10"
                Margin="10"
                Command="{Binding AnswerClick[0]}"
-               Content="{Binding Path=Answer[0]}"
+               Content="{Binding Path=StringAnswers[0]}"
                BorderBrush="#202020"
                BorderThickness="3">
 
@@ -99,7 +98,7 @@
                Padding="10"
                Margin="10"
                Command="{Binding AnswerClick[1]}"
-               Content="{Binding Path=Answer[1]}"
+               Content="{Binding Path=StringAnswers[1]}"
                BorderBrush="#202020"
                BorderThickness="3">
 
@@ -123,7 +122,7 @@
                Padding="10"
                Margin="10"
                Command="{Binding AnswerClick[2]}"
-               Content="{Binding Path=Answer[2]}"
+               Content="{Binding Path=StringAnswers[2]}"
                BorderBrush="#202020"
                BorderThickness="3">
 
@@ -147,7 +146,7 @@
                Padding="10"
                Margin="10"
                Command="{Binding AnswerClick[3]}"
-               Content="{Binding Path=Answer[3]}"
+               Content="{Binding Path=StringAnswers[3]}"
                BorderBrush="#202020"
                BorderThickness="3">
 

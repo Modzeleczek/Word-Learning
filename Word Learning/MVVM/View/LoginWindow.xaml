@@ -27,8 +27,17 @@
     BorderThickness="3px"
     BorderBrush="#202020">
     <StackPanel Margin="5,10,0,5">
-      <Label Content="Username"
-        Foreground="#D6D6D6"/>
+      <DockPanel>
+        <Label DockPanel.Dock="Left"
+          Content="Username"
+          Foreground="#D6D6D6"/>
+        <Button DockPanel.Dock="Right"
+            Click="ButtonClose_Click"
+            Style="{StaticResource CloseButtonTheme}"
+            VerticalAlignment="Center">
+          <Image Source="/Images/closeButton.png"/>
+        </Button>
+      </DockPanel>
       <TextBox Text="{Binding Path=Username, Mode=OneWayToSource}"
         Margin="10,0,10,10"
         Background="#202020"

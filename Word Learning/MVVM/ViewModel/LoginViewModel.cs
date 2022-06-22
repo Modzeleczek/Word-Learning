@@ -41,8 +41,7 @@ namespace Word_Learning.MVVM.ViewModel
             {
                 if (string.IsNullOrWhiteSpace(Username))
                 { Error("Specify a username."); return; }
-                if (string.IsNullOrWhiteSpace(Password))
-                { Error("Specify a password."); return; }
+                if (!ValidatePassword()) return;
                 var status = Storage.AddUser(new User { Username = Username, Password = Password });
                 if (status.Code == 0) Success("Please log in to your new account.");
                 else Error(status.Message);
@@ -57,6 +56,28 @@ namespace Word_Learning.MVVM.ViewModel
                 }
                 else Error(status.Message);
             });
+        }
+
+        private bool ValidatePassword()
+        {
+            if (string.IsNullOrWhiteSpace(Password))
+            { Error("Specify a password."); return false; }
+            if (Password.Length < 8)
+            { Error("Password should be at least 8 characters long."); return false; }
+            bool hasDigit = false;
+            foreach (var c in Password)
+                if (c >= '0' && c <= '9') { hasDigit = true; break; }
+            if (!hasDigit) { Error("Password should contain at least one digit."); return false; }
+            bool hasSpecial = false;
+            foreach (var c in Password)
+                if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')))
+                { hasSpecial = true; break; }
+            if (!hasSpecial)
+            {
+                Error("Password should contain at least one special character (not a letter or a digit).");
+                return false;
+            }
+            return true;
         }
     }
 }

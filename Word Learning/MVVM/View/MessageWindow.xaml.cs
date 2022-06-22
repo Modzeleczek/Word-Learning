@@ -24,6 +24,11 @@ namespace Word_Learning.MVVM.View
             new MessageWindow(owner, MessageViewModel.Bad(message)).ShowDialog();
         }
 
+        public static void NeutralDialog(Window owner, string message = "")
+        {
+            new MessageWindow(owner, MessageViewModel.Neutral(message)).ShowDialog();
+        }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

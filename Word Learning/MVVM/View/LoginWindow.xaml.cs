@@ -16,5 +16,10 @@ namespace Word_Learning.MVVM.View
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

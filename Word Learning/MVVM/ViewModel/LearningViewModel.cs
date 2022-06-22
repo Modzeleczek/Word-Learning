@@ -85,11 +85,11 @@ namespace Word_Learning.MVVM.ViewModel
                 {
                     downloadWindow.Closing -= handler;
                     downloadWindow.Close();
-                    var status = downloadViewModel.Status;
-                    if (status.Code != 0) MessageWindow.BadDialog(window, status.Message);
-                    else if (status.Message != "") MessageWindow.GoodDialog(window, status.Message);
                 };
                 downloadWindow.ShowDialog();
+                var status = downloadViewModel.Status;
+                if (status.Code != 0) MessageWindow.BadDialog(window, status.Message);
+                else if (status.Message != "") MessageWindow.GoodDialog(window, status.Message);
                 Words = new ObservableCollection<Word>(User.Instance.Words);
             });
         }

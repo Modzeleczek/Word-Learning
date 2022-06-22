@@ -103,8 +103,8 @@ namespace Word_Learning.MVVM.Model
             if (string.IsNullOrWhiteSpace(d.definition)) // faktyczna definicja
                 return false;
             // d.getExample(); // przykładu wybranej definicji może nie być (wtedy null)
-            /* List<String> synonyms = d.getSynonyms();
-            if (synonyms == null || synonyms.size() < 1) // słowo może nie mieć synonimów
+            /* List<string> synonyms = d.synonyms;
+            if (synonyms == null || synonyms.Count < 1) // słowo może nie mieć synonimów
                 return false; */
             return true;
         }
