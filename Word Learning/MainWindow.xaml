@@ -90,8 +90,7 @@
           </Button>
           <Button DockPanel.Dock="Right"
             Command="{Binding Path=Logout}"
-            Style="{StaticResource CloseButtonTheme}"
-                  BorderBrush="AliceBlue" BorderThickness="4">
+            Style="{StaticResource CloseButtonTheme}">
             <Image Source="Images/logout.png"/>
           </Button>
         </DockPanel>
