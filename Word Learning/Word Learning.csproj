@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\Controls\StatisticField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +169,9 @@
     </Compile>
     <Compile Include="MVVM\View\Controls\SearchTextBox.xaml.cs">
       <DependentUpon>SearchTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\Controls\StatisticField.xaml.cs">
+      <DependentUpon>StatisticField.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\TextEmptyToVisibilityConverter.cs" />
     <Compile Include="MVVM\View\MessageWindow.xaml.cs">

@@ -76,7 +76,7 @@ namespace Word_Learning.MVVM.ViewModel
                     if (CurrentModeVM == definitionQuizVM) return;
                     var status = definitionQuizVM.GenerateQuiz();
                     if (status.Code != 0)
-                        new MessageWindow(window, MessageViewModel.Bad(status.Message)).ShowDialog();
+                        MessageWindow.BadDialog(window, status.Message);
                     else
                         CurrentModeVM = definitionQuizVM;
                 });
@@ -88,7 +88,9 @@ namespace Word_Learning.MVVM.ViewModel
                 });
                 SwitchToStatistics = new RelayCommand(e =>
                 {
-                    if (CurrentModeVM != statisticsVM) CurrentModeVM = statisticsVM;
+                    if (CurrentModeVM == statisticsVM) return;
+                    statisticsVM.Refresh();
+                    CurrentModeVM = statisticsVM;
                 });
                 Logout = new RelayCommand(e =>
                 {
@@ -111,7 +113,7 @@ namespace Word_Learning.MVVM.ViewModel
             learningVM = new LearningViewModel(window);
             definitionQuizVM = new DefinitionQuizViewModel(window);
             synonymQuizVM = new SynonymQuizViewModel(window);
-            statisticsVM = new StatisticsViewModel(window);
+            statisticsVM = new StatisticsViewModel();
         }
 
         private void ShowLoginDialog(Window owner)

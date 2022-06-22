@@ -1,101 +1,47 @@
 ﻿<UserControl x:Class="Word_Learning.MVVM.View.StatisticsView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Word_Learning.MVVM.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1000"
-             Style="{StaticResource UserControl}">
-  <StackPanel>
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:local="clr-namespace:Word_Learning.MVVM.View"
+  xmlns:controls="clr-namespace:Word_Learning.MVVM.View.Controls"
+  mc:Ignorable="d" 
+  d:DesignHeight="600" d:DesignWidth="1000"
+  Style="{StaticResource UserControl}">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <TextBlock Text="Statistics"
+      Foreground="#D6D6D6"
+      FontSize="30"
+      HorizontalAlignment="Left"
+      Grid.Row="0"
+      Margin="20,0,0,0"/>
 
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="*"/>
-      </Grid.RowDefinitions>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
-      <TextBlock Text="Statistics"
-                   Foreground="#D6D6D6"
-                   FontSize="30"
-                   HorizontalAlignment="Left"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   Margin="20,0,0,0"/>
-      <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource Border}">
-        <Border.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
-                        <GradientStop Color="#3DABFF" Offset="1"/>
-          </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-          <TextBlock Text="Words downloaded" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
-          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-        </Grid>
+    <controls:StatisticField Grid.Row="1" Grid.Column="0" LabelText="Words downloaded"
+      ValueText="{Binding Path=Downloaded, Mode=OneWay}"/>
 
-      </Border>
-      <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource Border}">
-        <Border.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
-                        <GradientStop Color="#3DABFF" Offset="1"/>
-                    </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-          <TextBlock Text="Correct definition matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
-          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-        </Grid>
+    <controls:StatisticField Grid.Row="1" Grid.Column="1" LabelText="Words learned"
+      ValueText="{Binding Path=Learned, Mode=OneWay}"/>
 
+    <controls:StatisticField Grid.Row="2" Grid.Column="0" LabelText="Correct definition matches"
+      ValueText="{Binding Path=DefinitionMatches, Mode=OneWay}"/>
 
-      </Border>
-      <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource Border}">
-        <Border.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
-                        <GradientStop Color="#3DABFF" Offset="1"/>
-                    </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-          <TextBlock Text="Words learned" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10"/>
-          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-        </Grid>
+    <controls:StatisticField Grid.Row="2" Grid.Column="1" LabelText="Correct synonym matches"
+      ValueText="{Binding Path=SynonymMatches, Mode=OneWay}"/>
 
-      </Border>
-      <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource Border}">
-        <Border.Background>
-          <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#8ACCFF" Offset="0.0"/>
-                        <GradientStop Color="#3DABFF" Offset="1"/>
-                    </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-          <TextBlock Text="Correct synonym matches" Foreground="#202020" FontSize="30" HorizontalAlignment="Center" Margin="15" FontWeight="Bold" Grid.Row="0" Padding="10" TextWrapping="Wrap"/>
-          <TextBlock Text="0" Foreground="#202020" FontSize="40" HorizontalAlignment="Center" Margin="30" FontWeight="Bold" Grid.Row="1"/>
-        </Grid>
+    <controls:StatisticField Grid.Row="3" Grid.Column="0" LabelText="Total definition quiz attempts"
+      ValueText="{Binding Path=DefinitionAttempts, Mode=OneWay}"/>
 
-      </Border>
-    </Grid>
-
-  </StackPanel>
+    <controls:StatisticField Grid.Row="3" Grid.Column="1" LabelText="Total synonym quiz attempts"
+      ValueText="{Binding Path=SynonymAttempts, Mode=OneWay}"/>
+  </Grid>
 </UserControl>
