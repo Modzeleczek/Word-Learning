@@ -60,11 +60,21 @@
                                  FontSize="16"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding Path=SwitchToDefinitionQuiz}"/>
+          <RadioButton Content="Definition quiz history"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding Path=SwitchToDefinitionQuizHistory}"/>
           <RadioButton Content="Synonym quiz"
                                  Height="50"
                                  FontSize="16"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding Path=SwitchToSynonymQuiz}"/>
+          <RadioButton Content="Synonym quiz history"
+                                 Height="50"
+                                 FontSize="16"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 />
           <RadioButton Content="Statistics"
                                  Height="50"
                                  FontSize="16"

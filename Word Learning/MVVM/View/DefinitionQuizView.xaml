@@ -61,7 +61,8 @@
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
       Text="{Binding Path=StringQuestion, Mode=OneWay}"
       Style="{StaticResource DefinitionValue}"
-        TextWrapping="Wrap"/>
+        TextWrapping="Wrap"
+        FontSize="17"/>
         <Button
             Grid.Column="0"
             Grid.Row="2"

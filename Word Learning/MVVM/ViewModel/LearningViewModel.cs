@@ -9,7 +9,7 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class LearningViewModel : ObservableObject
     {
-        public ObservableCollection<Word> words;
+        private ObservableCollection<Word> words;
         public ObservableCollection<Word> Words
         {
             get { return words; }
@@ -41,25 +41,26 @@ namespace Word_Learning.MVVM.ViewModel
             {
                 searchText = value;
                 OnPropertyChanged(nameof(SearchText));
+                var user = User.Instance;
                 Words.Clear();
-                foreach (var w in User.Instance.Words)
-                    if (w.Content.Contains(searchText))
-                        Words.Add(w);
+                do
+                {
+                    var s = value;
+                    if (s.StartsWith("know:") && s.Length >= 6 && s[5] >= '0' && s[5] <= '4')
+                    {
+                        var level = value[5] - '0';
+                        foreach (var w in user.Words)
+                            if (w.DefinitionMatches == level) words.Add(w);
+                        break;
+                    }
+                    foreach (var w in User.Instance.Words)
+                        if (w.Content.Contains(searchText))
+                            Words.Add(w);
+                }
+                while (false);
                 SelectedIndex = -1;
             }
         }
-
-        private string wordCategory;
-        public string WordCategory
-        {
-            get { return wordCategory; }
-            set
-            {
-                wordCategory = value;
-                OnPropertyChanged(nameof(WordCategory));
-            }
-        }
-        public RelayCommand SwitchCategory { get; }
 
         public RelayCommand DownloadWords { get; }
 
@@ -67,14 +68,6 @@ namespace Word_Learning.MVVM.ViewModel
         {
             Words = new ObservableCollection<Word>(User.Instance.Words);
             SearchText = "";
-            var wordCategories = new string[] { "Downloaded", "User's" };
-            int wordCategoryId = 0;
-            WordCategory = wordCategories[wordCategoryId];
-            SwitchCategory = new RelayCommand(e =>
-            {
-                wordCategoryId = (wordCategoryId + 1) % 2;
-                WordCategory = wordCategories[wordCategoryId];
-            });
             DownloadWords = new RelayCommand(_e =>
             {
                 var downloadViewModel = new DownloadViewModel();

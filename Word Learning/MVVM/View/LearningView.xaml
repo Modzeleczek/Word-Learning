@@ -52,16 +52,6 @@
         SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}"
         Background="Transparent"
         BorderThickness="0">
-                <ListBox.Resources>
-                    <!--Defines a context menu-->
-                    <ContextMenu x:Key="MyElementMenu">
-                        <MenuItem Header="Delete"/>
-                    </ContextMenu>
-                    <!--Sets a context menu for each ListBoxItem in the current ListBox-->
-                    <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
-                    </Style>
-                </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <controls:ClippedBorder BorderThickness="4"

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Word_Learning.Core;
-using Word_Learning.MVVM.View;
 using static Word_Learning.MVVM.Model.Downloader;
 
 namespace Word_Learning.MVVM.ViewModel

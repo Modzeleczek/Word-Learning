@@ -81,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\AttemptDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\Controls\LabeledTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\View\Controls\StatisticField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\DefinitionQuizHistoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,13 +155,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Model\DetailedAttempt.cs" />
     <Compile Include="MVVM\Model\Downloader.cs" />
+    <Compile Include="MVVM\Model\IdWord.cs" />
     <Compile Include="MVVM\Model\Status.cs" />
     <Compile Include="MVVM\Model\Storage.cs" />
     <Compile Include="MVVM\Model\JsonIgnoreAttribute.cs" />
     <Compile Include="MVVM\Model\QuizAttempt.cs" />
     <Compile Include="MVVM\Model\User.cs" />
     <Compile Include="MVVM\Model\Word.cs" />
+    <Compile Include="MVVM\ViewModel\AttemptDetailsViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\DefinitionQuizHistoryViewModel.cs" />
     <Compile Include="MVVM\ViewModel\DefinitionQuizViewModel.cs" />
     <Compile Include="MVVM\ViewModel\DownloadViewModel.cs" />
     <Compile Include="MVVM\ViewModel\LearningViewModel.cs" />
@@ -163,6 +175,9 @@
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
     <Compile Include="MVVM\ViewModel\SynonymQuizViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
+    <Compile Include="MVVM\View\AttemptDetailsView.xaml.cs">
+      <DependentUpon>AttemptDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Controls\ClippedBorder.cs" />
     <Compile Include="MVVM\View\Controls\LabeledTextBox.xaml.cs">
       <DependentUpon>LabeledTextBox.xaml</DependentUpon>
@@ -174,6 +189,9 @@
       <DependentUpon>StatisticField.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\Converters\TextEmptyToVisibilityConverter.cs" />
+    <Compile Include="MVVM\View\DefinitionQuizHistoryView.xaml.cs">
+      <DependentUpon>DefinitionQuizHistoryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>

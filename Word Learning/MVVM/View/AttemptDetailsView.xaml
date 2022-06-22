@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Word_Learning.MVVM.View.AttemptDetailsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:controls="clr-namespace:Word_Learning.MVVM.View.Controls"
+  mc:Ignorable="d"
+  d:DesignHeight="600" d:DesignWidth="1000"
+  Style="{StaticResource UserControl}">
+  <ScrollViewer VerticalScrollBarVisibility="Disabled">
+    <StackPanel>
+      <controls:LabeledTextBox Margin="0,10" LabelText="Question"
+        ValueText="{Binding Path=DetailedAttempt.Question.Definition, Mode=OneWay}"/>
+      <Label Content="Possible answers" Margin="5,0,0,5" Foreground="#D6D6D6"/>
+      <TextBox Text="{Binding Path=DetailedAttempt.Answers[0].Content, Mode=OneWay}"
+        Margin="9,0,0,10" Background="#333533" Foreground="#D6D6D6"
+        BorderThickness="0" FontSize="14" IsReadOnly="True" TextWrapping="Wrap"/>
+      <TextBox Text="{Binding Path=DetailedAttempt.Answers[1].Content, Mode=OneWay}"
+        Margin="9,0,0,10" Background="#333533" Foreground="#D6D6D6"
+        BorderThickness="0" FontSize="14" IsReadOnly="True" TextWrapping="Wrap"/>
+      <TextBox Text="{Binding Path=DetailedAttempt.Answers[2].Content, Mode=OneWay}"
+        Margin="9,0,0,10" Background="#333533" Foreground="#D6D6D6"
+        BorderThickness="0" FontSize="14" IsReadOnly="True" TextWrapping="Wrap"/>
+      <TextBox Text="{Binding Path=DetailedAttempt.Answers[3].Content, Mode=OneWay}"
+        Margin="9,0,0,10" Background="#333533" Foreground="#D6D6D6"
+        BorderThickness="0" FontSize="14" IsReadOnly="True" TextWrapping="Wrap"/>
+      <controls:LabeledTextBox Margin="0,10" LabelText="Correct answer"
+        ValueText="{Binding Path=DetailedAttempt.CorrectAnswer.Content, Mode=OneWay}"/>
+      <controls:LabeledTextBox Margin="0,10" LabelText="Your answer"
+        ValueText="{Binding Path=DetailedAttempt.UsersAnswer.Content, Mode=OneWay}"/>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

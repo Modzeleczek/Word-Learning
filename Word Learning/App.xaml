@@ -25,6 +25,12 @@
             <DataTemplate DataType="{x:Type viewModel:DefinitionQuizViewModel}">
                 <view:DefinitionQuizView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:DefinitionQuizHistoryViewModel}">
+                <view:DefinitionQuizHistoryView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AttemptDetailsViewModel}">
+              <view:AttemptDetailsView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:StatisticsViewModel}">
                 <view:StatisticsView/>
             </DataTemplate>

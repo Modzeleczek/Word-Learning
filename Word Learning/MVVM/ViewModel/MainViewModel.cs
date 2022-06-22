@@ -21,6 +21,13 @@ namespace Word_Learning.MVVM.ViewModel
             get { return switchToDefinitionQuiz; }
             private set { switchToDefinitionQuiz = value; OnPropertyChanged(nameof(SwitchToDefinitionQuiz)); }
         }
+        private RelayCommand switchToDefinitionQuizHistory;
+        public RelayCommand SwitchToDefinitionQuizHistory
+        {
+            get { return switchToDefinitionQuizHistory; }
+            private set { switchToDefinitionQuizHistory = value;
+                OnPropertyChanged(nameof(SwitchToDefinitionQuizHistory)); }
+        }
         private RelayCommand switchToSynonymQuiz;
         public RelayCommand SwitchToSynonymQuiz
         {
@@ -54,6 +61,7 @@ namespace Word_Learning.MVVM.ViewModel
 
         private LearningViewModel learningVM;
         private DefinitionQuizViewModel definitionQuizVM;
+        private DefinitionQuizHistoryViewModel definitionQuizHistoryVM;
         private SynonymQuizViewModel synonymQuizVM;
         private StatisticsViewModel statisticsVM;
 
@@ -80,7 +88,13 @@ namespace Word_Learning.MVVM.ViewModel
                     else
                         CurrentModeVM = definitionQuizVM;
                 });
-                switchToSynonymQuiz = new RelayCommand(e =>
+                SwitchToDefinitionQuizHistory = new RelayCommand(e =>
+                {
+                    if (CurrentModeVM == definitionQuizHistoryVM) return;
+                    definitionQuizHistoryVM.Refresh();
+                    CurrentModeVM = definitionQuizHistoryVM;
+                });
+                SwitchToSynonymQuiz = new RelayCommand(e =>
                 {
                     if (CurrentModeVM == synonymQuizVM) return;
                     // synonymQuizVM.GenerateQuestion();
@@ -112,6 +126,7 @@ namespace Word_Learning.MVVM.ViewModel
         {
             learningVM = new LearningViewModel(window);
             definitionQuizVM = new DefinitionQuizViewModel(window);
+            definitionQuizHistoryVM = new DefinitionQuizHistoryViewModel();
             synonymQuizVM = new SynonymQuizViewModel(window);
             statisticsVM = new StatisticsViewModel();
         }

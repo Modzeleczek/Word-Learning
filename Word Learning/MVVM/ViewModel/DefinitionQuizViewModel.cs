@@ -10,13 +10,6 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class DefinitionQuizViewModel : ObservableObject
     {
-        public class IdWord
-        {
-            public int Id { get; set; }
-            public Word Word { get; set; }
-            public IdWord(int id, Word word) { Id = id; Word = word; }
-        }
-
         private string stringQuestion = null;
         public string StringQuestion
         {
@@ -56,8 +49,8 @@ namespace Word_Learning.MVVM.ViewModel
                         else
                         {
                             user.Words[question.Id].DefinitionMatches = 0;
-                            new MessageWindow(window,
-                                MessageViewModel.Bad("Incorrect answer.")).ShowDialog();
+                            new MessageWindow(window, MessageViewModel.Bad(
+                                    $"Incorrect answer. The correct is '{question.Word.Content}'.")).ShowDialog();
                         }
                         var attempt = new QuizAttempt
                         {
