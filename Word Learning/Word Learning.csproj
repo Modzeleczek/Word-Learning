@@ -217,9 +217,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\downloadButton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\dictionary.png" />
   </ItemGroup>
   <ItemGroup>
@@ -229,14 +226,27 @@
     <Resource Include="Images\minimizeButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\crying.png" />
-    <Resource Include="Images\emoji.png" />
-    <Resource Include="Images\expressionless.png" />
-    <Resource Include="Images\grinning.png" />
-    <Resource Include="Images\happy.png" />
+    <Resource Include="Images\crying.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\emoji.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\expressionless.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\grinning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\happy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\downloadButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

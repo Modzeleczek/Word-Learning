@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Word_Learning.MVVM.View.Converters
 {
@@ -17,14 +18,9 @@ namespace Word_Learning.MVVM.View.Converters
         {
             if (value == null) // throw new ArgumentException("Value is null.");
                 return DependencyProperty.UnsetValue;
-            var colorMap = new Color[] // poziomy nauczenia słowa
-            {
-                Color.FromRgb(255/1, 255/4, 0), // czerwony, jeżeli użytkownik 0 razy z rzędu dobrze dopasował słowo do jego definicji
-                Color.FromRgb(255/2, 255/3, 0), // 1 raz
-                Color.FromRgb(255/3, 255/2, 0), // 2 razy
-                Color.FromRgb(255/4, 255/1, 0) // 3 razy
-            };
-            return new SolidColorBrush(colorMap[(int)value]);
+            var fileNameMap = new string[] { "crying", "emoji", "expressionless", "happy", "grinning" };
+            var filePath = $"emojis/{fileNameMap[(int)value]}.png"; // nie może być / z przodu do UriKind.Relative
+            return new ImageBrush(new BitmapImage(new Uri(filePath, UriKind.Relative)));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
