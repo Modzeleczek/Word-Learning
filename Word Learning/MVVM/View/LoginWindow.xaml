@@ -34,7 +34,8 @@
         <Button DockPanel.Dock="Right"
             Click="ButtonClose_Click"
             Style="{StaticResource CloseButtonTheme}"
-            VerticalAlignment="Center">
+            VerticalAlignment="Center"
+            Margin="0,0,10,5">
           <Image Source="/Images/closeButton.png"/>
         </Button>
       </DockPanel>
@@ -46,13 +47,13 @@
         FontSize="14"/>
       <Label Content="Password"
         Foreground="#D6D6D6"/>
-      <TextBox Text="{Binding Path=Password, Mode=TwoWay}"
-        Margin="10,0,10,10"
+      <PasswordBox Margin="10,0,10,10"
         Background="#202020"
         BorderBrush="#202020"
         Foreground="#D6D6D6"
         BorderThickness="0"
-        FontSize="14"/>
+        FontSize="14"
+        Name="_PasswordBox"/>
       <Button Content="Login"
         FontWeight="SemiBold"
         Foreground="#202020"
@@ -60,7 +61,9 @@
         Margin="40,5,40,5"
         BorderBrush="#202020"
         BorderThickness="3"
-        Command="{Binding Path=Login}">
+        Command="{Binding Path=Login}"
+        CommandParameter="{Binding
+        ElementName=_PasswordBox}">
         <Button.Resources>
           <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="20"/>
