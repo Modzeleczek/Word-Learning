@@ -44,8 +44,8 @@ namespace Word_Learning.MVVM.ViewModel
             var worker = (BackgroundWorker)sender;
             LinkedList<string> words;
             var randomEx = new BackgroundWorkerError("Random words could not be downloaded.");
-            try { words = GetRandomWords(50); }
-            catch (AggregateException ex) { throw randomEx; }
+            try { words = GetRandomWords(30); }
+            catch (AggregateException) { throw randomEx; }
             if (words == null)
             { // błąd podczas pobierania losowych słów
                 if (!worker.CancellationPending) throw randomEx;

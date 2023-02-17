@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 using Word_Learning.Core;
 using Word_Learning.MVVM.Model;
+using Word_Learning.MVVM.View;
 
 namespace Word_Learning.MVVM.ViewModel
 {
     public class StatisticsViewModel : ObservableObject
     {
+        private Window window;
         private int downloaded;
         public int Downloaded
         {
@@ -43,7 +45,23 @@ namespace Word_Learning.MVVM.ViewModel
             set { synonymAttempts = value; OnPropertyChanged(nameof(SynonymAttempts)); }
         }
 
-        public StatisticsViewModel() { }
+        public RelayCommand ResetProgress { get; private set; }
+
+        public StatisticsViewModel(Window window)
+        {
+            this.window = window;
+            ResetProgress = new RelayCommand(e =>
+            {
+                var vm = new OkCancelViewModel { MessageText = "Do you want to reset your progress? " };
+                new OkCancelWindow(window, vm).ShowDialog();
+                var status = vm.Status;
+                if (status.Code == 0)
+                {
+                    User.Instance.Clear();
+                    Refresh();
+                }
+            });
+        }
 
         public void Refresh()
         {

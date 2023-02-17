@@ -62,7 +62,6 @@ namespace Word_Learning.MVVM.ViewModel
         private LearningViewModel learningVM;
         private DefinitionQuizViewModel definitionQuizVM;
         private DefinitionQuizHistoryViewModel definitionQuizHistoryVM;
-        private SynonymQuizViewModel synonymQuizVM;
         private StatisticsViewModel statisticsVM;
 
         public MainViewModel()
@@ -74,6 +73,7 @@ namespace Word_Learning.MVVM.ViewModel
                 SwitchToLearning = new RelayCommand(e =>
                 {
                     if (CurrentModeVM == learningVM) return;
+                    learningVM.Refresh();
                     CurrentModeVM = learningVM;
                     if (User.Instance.Words.Count == 0)
                         MessageWindow.NeutralDialog(window, "You don't have any words. " +
@@ -93,12 +93,6 @@ namespace Word_Learning.MVVM.ViewModel
                     if (CurrentModeVM == definitionQuizHistoryVM) return;
                     definitionQuizHistoryVM.Refresh();
                     CurrentModeVM = definitionQuizHistoryVM;
-                });
-                SwitchToSynonymQuiz = new RelayCommand(e =>
-                {
-                    if (CurrentModeVM == synonymQuizVM) return;
-                    // synonymQuizVM.GenerateQuestion();
-                    CurrentModeVM = synonymQuizVM;
                 });
                 SwitchToStatistics = new RelayCommand(e =>
                 {
@@ -127,8 +121,7 @@ namespace Word_Learning.MVVM.ViewModel
             learningVM = new LearningViewModel(window);
             definitionQuizVM = new DefinitionQuizViewModel(window);
             definitionQuizHistoryVM = new DefinitionQuizHistoryViewModel();
-            synonymQuizVM = new SynonymQuizViewModel(window);
-            statisticsVM = new StatisticsViewModel();
+            statisticsVM = new StatisticsViewModel(window);
         }
 
         private void ShowLoginDialog(Window owner)

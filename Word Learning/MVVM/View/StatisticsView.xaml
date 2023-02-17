@@ -13,7 +13,6 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
       <RowDefinition Height="*"/>
-      <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*"/>
@@ -24,7 +23,18 @@
       FontSize="30"
       HorizontalAlignment="Left"
       Grid.Row="0"
+      Grid.Column="0"
       Margin="20,0,0,0"/>
+    <Button Grid.Row="0"
+      Grid.Column="1"
+      HorizontalAlignment="Right"
+      Height="20"
+      Margin="0,0,10,0"
+      BorderThickness="0"
+      Command="{Binding Path=ResetProgress}"
+      Style="{StaticResource CloseButtonTheme}">
+      <Image Source="/Images/deleteButton.png"/>
+    </Button>
 
     <controls:StatisticField Grid.Row="1" Grid.Column="0" LabelText="Words downloaded"
       ValueText="{Binding Path=Downloaded, Mode=OneWay}"/>
@@ -32,16 +42,11 @@
     <controls:StatisticField Grid.Row="1" Grid.Column="1" LabelText="Words learned"
       ValueText="{Binding Path=Learned, Mode=OneWay}"/>
 
-    <controls:StatisticField Grid.Row="2" Grid.Column="0" LabelText="Correct definition matches"
-      ValueText="{Binding Path=DefinitionMatches, Mode=OneWay}"/>
-
-    <controls:StatisticField Grid.Row="2" Grid.Column="1" LabelText="Correct synonym matches"
-      ValueText="{Binding Path=SynonymMatches, Mode=OneWay}"/>
-
-    <controls:StatisticField Grid.Row="3" Grid.Column="0" LabelText="Total definition quiz attempts"
+    <controls:StatisticField Grid.Row="2" Grid.Column="0" LabelText="Total definition quiz attempts"
       ValueText="{Binding Path=DefinitionAttempts, Mode=OneWay}"/>
 
-    <controls:StatisticField Grid.Row="3" Grid.Column="1" LabelText="Total synonym quiz attempts"
-      ValueText="{Binding Path=SynonymAttempts, Mode=OneWay}"/>
+    <controls:StatisticField Grid.Row="2" Grid.Column="1" LabelText="Correct definition matches"
+      ValueText="{Binding Path=DefinitionMatches, Mode=OneWay}"/>
+
   </Grid>
 </UserControl>

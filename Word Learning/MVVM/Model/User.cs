@@ -26,5 +26,13 @@ namespace Word_Learning.MVVM.Model
             DefinitionQuizAttempts.Clear();
             SynonymQuizAttempts.Clear();
         }
+
+        public void ResetProgress()
+        {
+            Words.Clear();
+            Synonyms.Clear();
+            DefinitionQuizAttempts.Clear();
+            SynonymQuizAttempts.Clear();
+        }
     }
 }

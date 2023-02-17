@@ -62,8 +62,7 @@
         BorderBrush="#202020"
         BorderThickness="3"
         Command="{Binding Path=Login}"
-        CommandParameter="{Binding
-        ElementName=_PasswordBox}">
+        CommandParameter="{Binding ElementName=_PasswordBox}">
         <Button.Resources>
           <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="20"/>
@@ -88,7 +87,8 @@
         Margin="40,5,40,5"
         BorderBrush="#202020"
         BorderThickness="3"
-        Command="{Binding Path=Register}">
+        Command="{Binding Path=Register}"
+        CommandParameter="{Binding ElementName=_PasswordBox}">
         <Button.Resources>
           <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="20"/>

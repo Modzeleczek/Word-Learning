@@ -19,7 +19,7 @@ namespace Word_Learning.MVVM.View.Converters
             if (value == null) // throw new ArgumentException("Value is null.");
                 return DependencyProperty.UnsetValue;
             var fileNameMap = new string[] { "crying", "emoji", "expressionless", "happy", "grinning" };
-            var filePath = $"emojis/{fileNameMap[(int)value]}.png"; // nie może być / z przodu do UriKind.Relative
+            var filePath = $"Images/{fileNameMap[(int)value]}.png"; // nie może być / z przodu do UriKind.Relative
             return new ImageBrush(new BitmapImage(new Uri(filePath, UriKind.Relative)));
         }
 

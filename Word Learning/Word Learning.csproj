@@ -121,6 +121,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVVM\View\OkCancelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\StatisticsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,8 +176,8 @@
     <Compile Include="MVVM\ViewModel\LoginViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModel\MessageViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\OkCancelViewModel.cs" />
     <Compile Include="MVVM\ViewModel\StatisticsViewModel.cs" />
-    <Compile Include="MVVM\ViewModel\SynonymQuizViewModel.cs" />
     <Compile Include="MVVM\ViewModel\WordDetailsViewModel.cs" />
     <Compile Include="MVVM\View\AttemptDetailsView.xaml.cs">
       <DependentUpon>AttemptDetailsView.xaml</DependentUpon>
@@ -207,6 +211,9 @@
     </Compile>
     <Compile Include="MVVM\View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\OkCancelWindow.xaml.cs">
+      <DependentUpon>OkCancelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\View\StatisticsView.xaml.cs">
       <DependentUpon>StatisticsView.xaml</DependentUpon>
@@ -251,27 +258,30 @@
     <Resource Include="Images\minimizeButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\crying.png">
+    <Content Include="Images\crying.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\emoji.png">
+    </Content>
+    <Content Include="Images\emoji.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\expressionless.png">
+    </Content>
+    <Content Include="Images\expressionless.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\grinning.png">
+    </Content>
+    <Content Include="Images\grinning.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\happy.png">
+    </Content>
+    <Content Include="Images\happy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logout.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\downloadButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\deleteButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

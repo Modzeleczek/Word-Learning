@@ -86,5 +86,10 @@ namespace Word_Learning.MVVM.ViewModel
                 Words = new ObservableCollection<Word>(User.Instance.Words);
             });
         }
+
+        public void Refresh()
+        {
+            Words = new ObservableCollection<Word>(User.Instance.Words);
+        }
     }
 }
