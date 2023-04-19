@@ -127,7 +127,8 @@ namespace Word_Learning.MVVM.Model
             if (password == null) password = "";
             using (SHA256 sha256 = SHA256.Create())
             {
-                // hash obliczony sha256 zawsze ma dokładnie 32 bajty (32 * 8 b = 256 b)
+                /* Hash computed with SHA256 always has exactly 32 bytes
+                (32 B = 32 * 8 b = 256 b). */
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 return Convert.ToBase64String(bytes);
             }

@@ -6,9 +6,11 @@ namespace Word_Learning.MVVM.ViewModel
 {
     public class DefinitionQuizHistoryViewModel : ObservableObject
     {
-        private DetailedAttempt[] StaticDetailedAttempts; // statyczne podejścia wyznaczone z bazy danych
+        // Static attempts read from database
+        private DetailedAttempt[] StaticDetailedAttempts;
         private ObservableCollection<DetailedAttempt> detailedAttempts;
-        public ObservableCollection<DetailedAttempt> DetailedAttempts // filtrowane podejścia
+        // Filtered attempts
+        public ObservableCollection<DetailedAttempt> DetailedAttempts
         {
             get { return detailedAttempts; }
             private set { detailedAttempts = value; OnPropertyChanged(nameof(DetailedAttempts)); }

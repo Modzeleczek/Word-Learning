@@ -35,7 +35,7 @@ namespace Word_Learning.MVVM.ViewModel
                 int answerIndex = i;
                 AnswerClick[i] = new RelayCommand(o =>
                 {
-                    if (question != null) // quiz jest ustawiony
+                    if (question != null) // Quiz is set (ready for solving).
                     {
                         var user = User.Instance;
                         if (answers[answerIndex].Id == question.Id)
@@ -91,7 +91,7 @@ namespace Word_Learning.MVVM.ViewModel
             var unknownL = new List<IdWord>(unknownLL);
             question = PickNRandom(unknownL, 1)[0];
             if (all.Count < 4)
-            // w bazie danych nie ma nawet 4 słów
+            // The database does not contain even 4 words.
             { Clear(); return new Status(2, "Not enough words for quiz answers. Download new ones."); }
             var allIdWordsL = new List<IdWord>(all.Count);
             for (int i = 0; i < all.Count; ++i)
@@ -130,7 +130,7 @@ namespace Word_Learning.MVVM.ViewModel
             int aI = 0;
             for (i = 0; i < correctAnswerIndex; ++i)
                 answers[i] = incorrectAnswers[aI++];
-            answers[i++] = question; // prawidłowa odpowiedź
+            answers[i++] = question; // Correct answer
             for (; i < 4; ++i)
                 answers[i] = incorrectAnswers[aI++];
             return answers;

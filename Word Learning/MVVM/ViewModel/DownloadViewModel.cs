@@ -47,7 +47,7 @@ namespace Word_Learning.MVVM.ViewModel
             try { words = GetRandomWords(30); }
             catch (AggregateException) { throw randomEx; }
             if (words == null)
-            { // błąd podczas pobierania losowych słów
+            { // Error occurred while downloading random words.
                 if (!worker.CancellationPending) throw randomEx;
                 else { e.Cancel = true; return; }
             }
@@ -60,11 +60,15 @@ namespace Word_Learning.MVVM.ViewModel
                 {
                     Word detailedWord = null;
                     try { detailedWord = GetFirstHomonym(word); }
-                    catch (AggregateException) { } // jeżeli nie udało się pobrać słowa, to je pomijamy
-                    if (detailedWord != null) // jeżeli słowo nie spełnia warunków aplikacji, to je pomijamy
+                    // If the word could not be downloaded, skip it.
+                    catch (AggregateException) { }
+                    /* If the word does not satisfy application's conditions,
+                    skip it. */
+                    if (detailedWord != null)
                         detailedWords.AddLast(detailedWord);
                 }
-                catch (JsonSerializationException) { } // jeżeli nie udało się pobrać słowa, to je pomijamy
+                // If the word could not be downloaded, skip it.
+                catch (JsonSerializationException) { }
                 worker.ReportProgress(((++progress) * 100) / words.Count);
             }
             // if (detailedWords.Count < DOWNLOADED_WORDS / 4)
@@ -79,18 +83,21 @@ namespace Word_Learning.MVVM.ViewModel
             e.Result = new Model.Status(0, $"{detailedWords.Count} new words downloaded.");
         }
 
-        // wywoływane co wywołanie ReportProgress
+        // Called every ReportProgress call
         private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Progress = e.ProgressPercentage;
         }
 
-        // wywoływane po returnie z DoWork, nawet jeżeli użytkownik anulował
+        // Called after returning from DoWork, even if the user cancelled.
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Error != null) Status = new Model.Status(1, e.Error.Message); // wystąpił błąd
-            else if (e.Cancelled) Status = new Model.Status(0, ""); // użytkownik anulował
-            else Status = (Model.Status)e.Result; // zakończono powodzeniem
+            // Error occurred.
+            if (e.Error != null) Status = new Model.Status(1, e.Error.Message);
+            // The user cancelled.
+            else if (e.Cancelled) Status = new Model.Status(0, "");
+            // Successfully finished.
+            else Status = (Model.Status)e.Result;
             OnRequestClose(this, new EventArgs());
         }
 
@@ -105,7 +112,8 @@ namespace Word_Learning.MVVM.ViewModel
                     throw new Exception($"User has duplicated word: {content}.");
                 userWordSet.Add(content);
             }
-            var userSynonymDict = new Dictionary<string, int>(); // (synonim, indeks)
+            // (synonym, index)
+            var userSynonymDict = new Dictionary<string, int>();
             for (int i = 0; i < user.Synonyms.Count; ++i)
             {
                 var content = user.Synonyms[i];
@@ -115,12 +123,17 @@ namespace Word_Learning.MVVM.ViewModel
             }
             foreach (Word dw in detailedWords)
             {
-                string word = dw.word; // zapisujemy treść słowa
-                Meaning m = dw.meanings[0]; // bierzemy tylko pierwsze znaczenie
-                string partOfSpeech = m.partOfSpeech; // zapisujemy nazwę części mowy
-                Definition d = m.definitions[0]; // bierzemy tylko pierwszą definicję
-                string definition = d.definition; // zapisujemy definicję
-                string example = d.example; // zapisujemy przykład wybranej definicji lub null, jeżeli go nie ma
+                string word = dw.word; // Save the word's content.
+                Meaning m = dw.meanings[0]; // Take only the first meaning.
+                // Save part of speech name.
+                string partOfSpeech = m.partOfSpeech;
+                // Take only the first definition.
+                Definition d = m.definitions[0];
+                // Save the definition.
+                string definition = d.definition;
+                /* Save an example of the selected definition or null if no
+                example exists. */
+                string example = d.example;
                 List<string> synonyms = d.synonyms;
                 if (userWordSet.Contains(word)) continue;
                 var synonymIds = new LinkedList<int>();

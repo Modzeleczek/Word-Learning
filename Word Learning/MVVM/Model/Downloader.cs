@@ -77,34 +77,44 @@ namespace Word_Learning.MVVM.Model
         {
             var jsonString = Get(DETAILS_API + word);
             List<Word> homonyms = JsonConvert.DeserializeObject<List<Word>>(jsonString);
-            // dla jednego stringa, np. "bear", API może zwrócić kilka słów (homonimów); jeżeli nie udało się pobrać słowa, to execute wyrzuca IOException
+            /* For one string, e.g. 'bear', API can return multiple words
+            (homonyms). If could not download the word, execute throws
+            IOException. */
             return IsWordEligible(homonyms) ? homonyms[0] : null;
         }
 
         private static bool IsWordEligible(List<Word> homonyms)
         {
-            if (homonyms == null || homonyms.Count < 1) // słowo nie zostało pobrane lub nie istnieje
-                // żaden jego homonim w słowniku
+            /* Word was not downloaded or no its homonym exists in the
+            dictionary. */
+            if (homonyms == null || homonyms.Count < 1)
                 return false;
-            Word dw = homonyms[0]; // bierzemy tylko pierwszy homonim z możliwych kilku
-            if (string.IsNullOrWhiteSpace(dw.word)) // faktyczne słowo
+            // Take only the first homonym from multiple possible ones.
+            Word dw = homonyms[0];
+            if (string.IsNullOrWhiteSpace(dw.word)) // Actual word
                 return false;
             List<Meaning> meanings = dw.meanings;
-            if (meanings == null || meanings.Count < 1) // słowo nie ma żadnych znaczeń w słowniku
+            // Word has no meanings in the dictionary.
+            if (meanings == null || meanings.Count < 1)
                 return false;
-            Meaning m = meanings[0]; // bierzemy tylko pierwsze znaczenie
-            if (string.IsNullOrWhiteSpace(m.partOfSpeech)) // nazwa części mowy
+            Meaning m = meanings[0]; // Take only the first meaning.
+            // Part of speech name
+            if (string.IsNullOrWhiteSpace(m.partOfSpeech))
                 return false;
             List<Definition> definitions = m.definitions;
-            if (definitions == null || definitions.Count < 1) // wybrane pierwsze znaczenie nie ma
-                // żadnych definicji w słowniku
+            /* The selected (first) meaning has no definitions in the
+            dictionary. */
+            if (definitions == null || definitions.Count < 1)
                 return false;
-            Definition d = definitions[0]; // bierzemy tylko pierwszą definicję
-            if (string.IsNullOrWhiteSpace(d.definition)) // faktyczna definicja
+            Definition d = definitions[0]; // Take only the first definition.
+            if (string.IsNullOrWhiteSpace(d.definition)) // Actual definition
                 return false;
-            // d.getExample(); // przykładu wybranej definicji może nie być (wtedy null)
+            /* There may be no example of the the selected definition (null
+            then). */
+            // d.getExample();
             /* List<string> synonyms = d.synonyms;
-            if (synonyms == null || synonyms.Count < 1) // słowo może nie mieć synonimów
+            // Word may have no synonyms.
+            if (synonyms == null || synonyms.Count < 1)
                 return false; */
             return true;
         }
